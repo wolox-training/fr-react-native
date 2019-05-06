@@ -11,7 +11,6 @@ export default function index() {
   return (
     <View style={{marginTop:60}}>
       <Book/>
-      <Book/>
     </View>
       
 
