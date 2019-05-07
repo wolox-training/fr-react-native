@@ -1,16 +1,7 @@
 import React from 'react';
 
-import {View} from 'react-native'
-
-
-import BookList from './src/app/components/BookList'
+import Library from './src/app/screens/Library';
 
 export default function index() {
-  return (
-    <View style={{marginTop:60, backgroundColor:'#00ffff',padding:30}}>
-      <BookList />
-    </View>
-      
-
-  );
+  return <Library />;
 }
