@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Library from './src/app/screens/Library';
+import MyApp from './src/app';
 
 export default function index() {
-  return <Library />;
+  return <MyApp />;
 }
