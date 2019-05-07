@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {View, Text, Image} from 'react-native';
 import styles from './styles';
+import PropTypes from 'prop-types';
 function Book({image,title,author}){
         console.log(title,image,author);
       return (
@@ -23,4 +24,10 @@ function Book({image,title,author}){
       );
   }
 
+  Book.propTypes = {
+    title: PropTypes.string,
+    author:PropTypes.string,
+    image:PropTypes.string
+  };
+  
   export default Book;

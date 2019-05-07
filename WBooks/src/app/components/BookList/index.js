@@ -3,6 +3,7 @@ import {View, FlatList} from 'react-native';
 import styles from './styles';
 import booksInfo from '../../../constants/books.json';
 import Book from '../Book';
+
 class BookList extends Component {
     keyExtractor = (item) => `${item.id}`
     renderItem = ({item}) => (
