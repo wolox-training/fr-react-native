@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, FlatList } from 'react-native';
 
-import booksInfo from '../../../../../constants/books.json';
+import booksInfo from '../../../../../constants/books';
 import Book from '../Book';
 
 import styles from './styles';
