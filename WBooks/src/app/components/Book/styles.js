@@ -4,11 +4,17 @@ const styles = StyleSheet.create({
     bookContainer: {
         paddingTop:15,
         paddingBottom:15,
-        paddingLeft:40,
+        paddingLeft:20,
         flexDirection:'row',
+        backgroundColor:'#FFFFFF',
+        borderRadius:5
     },
     bookImage:{
         marginRight:18
+    },
+    image:{
+        width: 40, 
+        height: 60
     },
     titleAndAuthor:{
         flexDirection:'column'

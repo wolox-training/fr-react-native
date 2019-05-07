@@ -6,7 +6,7 @@
        "genre":"Short story",
        "publisher":"Butterworth-Heinemann",
        "year":"1968",
-       "image_url":null
+       "image_url":"http://wolox-training.s3.amazonaws.com/uploads/6942334-M.jpg"
     },
     {
        "id":2,
@@ -15,7 +15,7 @@
        "genre":"other",
        "publisher":"Pocket Books",
        "year":"1989",
-       "image_url":null
+       "image_url":"http://wolox-training.s3.amazonaws.com/uploads/6942334-M.jpg"
     },
     {
        "id":3,
@@ -47,7 +47,7 @@
     {
        "id":6,
        "author":"Paula Hawkins",
-       "title":"The Girl on the Train\n",
+       "title":"The Girl on the Train",
        "genre":"suspense",
        "publisher":"Riverhead Books",
        "year":"2015",
