@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import colors from '../../../../../constants/colors';
+import { white, darkGray } from '../../../../../constants/colors';
 
 const styles = StyleSheet.create({
   bookContainer: {
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingLeft: 20,
     flexDirection: 'row',
-    backgroundColor: colors.white,
+    backgroundColor: white,
     borderRadius: 5
   },
   bookImage: {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontStyle: 'normal',
-    color: colors.grayTitle,
+    color: darkGray,
     fontSize: 17
   },
   authorContainer: {

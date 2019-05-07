@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-import colors from '../../../constants/colors';
+import { lightBlue } from '../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.blueBackground,
+    backgroundColor: lightBlue,
     padding: 20,
     marginTop: 30
   }
