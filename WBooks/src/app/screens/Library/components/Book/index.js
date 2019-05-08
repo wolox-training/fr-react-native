@@ -1,29 +1,41 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 
-import imageNoExists from '../../../../../assets/general/no_book_question.jpg';
 import { ROUTES } from '../../../../../constants/routes';
 import { navigationProptype } from '../../../../../propTypes/navigation';
+import { getBookById } from '../../../../../utils/book';
+import ImageBook from '../../../../components/ImageBook';
 
 import styles from './styles';
 
 class Book extends Component {
+  state = {
+    book: { image_url: '', title: '', author: '' }
+  };
+
+  componentDidMount() {
+    const { id } = this.props;
+    this.setState({ book: getBookById(id) });
+  }
+
   handlePress = () => {
     const {
       navigation: { navigate }
     } = this.props;
-    navigate(ROUTES.BookDetail);
+    const { book } = this.state;
+    navigate(ROUTES.BookDetail, { book });
   };
 
   render() {
-    const { image, title, author } = this.props;
-    const imageSource = image ? { uri: image } : imageNoExists;
+    const {
+      book: { image_url: image, title, author }
+    } = this.state;
     return (
       <TouchableOpacity style={styles.bookContainer} onPress={this.handlePress}>
         <View style={styles.bookImage}>
-          <Image style={styles.image} source={imageSource} />
+          <ImageBook style={styles.image} source={image} />
         </View>
         <View style={styles.titleAndAuthor}>
           <View>
@@ -39,9 +51,7 @@ class Book extends Component {
 }
 
 Book.propTypes = {
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  image: PropTypes.string,
+  id: PropTypes.number.isRequired,
   navigation: navigationProptype.isRequired
 };
 
