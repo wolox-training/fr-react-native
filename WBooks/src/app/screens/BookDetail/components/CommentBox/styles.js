@@ -3,9 +3,6 @@ import { StyleSheet } from 'react-native';
 import { linkBlue } from '../../../../../constants/colors';
 
 const styles = StyleSheet.create({
-  commentsContainer: {
-    flexDirection: 'column'
-  },
   separator: {
     height: 10
   },
