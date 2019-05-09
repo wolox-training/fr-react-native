@@ -23,6 +23,7 @@ class DetailBox extends Component {
       ? styles.rentButtonAvailable
       : styles.rentButtonNotAvailable;
     const textButtonRentStyle = genericBook.isAvailable ? styles.textAvailable : styles.textNotAvailable;
+    const disabled = !genericBook.isAvailable;
     return (
       <View style={styles.bookContainer}>
         <View style={styles.detailContainer}>
@@ -57,6 +58,7 @@ class DetailBox extends Component {
           <TouchableOpacity
             onPress={this.handleRentBook}
             style={[styles.genericStyleButton, rentButtonStyle]}
+            disabled={disabled}
           >
             <Text style={[styles.genericTextButton, textButtonRentStyle]}>{buttonText.rent}</Text>
           </TouchableOpacity>
