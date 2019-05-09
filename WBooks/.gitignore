@@ -21,6 +21,9 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+*dev_push_certificates
+*stage_push_certificates
+*qa_push_certificates
 
 # Android/IntelliJ
 #
@@ -40,6 +43,12 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
+/*.env
+
+
+# .vscode
+.vscode/settings.json
+.vscode/.react
 
 # fastlane
 #
@@ -55,4 +64,5 @@ buck-out/
 # Bundle artifact
 *.jsbundle
 
-.vscode/
+*.dSYM.zip
+.history
