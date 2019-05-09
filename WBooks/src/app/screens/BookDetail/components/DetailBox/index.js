@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation';
 import ImageBook from '../../../../components/ImageBook';
 
 import { genericBook } from './constants/genericBook';
-import { availability } from './constants/availability';
+import { availability, buttonText } from './constants/text';
 import styles from './styles';
 
 class DetailBox extends Component {
@@ -17,6 +17,12 @@ class DetailBox extends Component {
     const { navigation } = this.props;
     const book = navigation.getParam('book', {});
     const { image_url: image, title, author, year } = book;
+    const availabilityStyle = genericBook.isAvailable ? styles.available : styles.notAvailable;
+    const availabilityText = genericBook.isAvailable ? availability.available : availability.notAvailable;
+    const rentButtonStyle = genericBook.isAvailable
+      ? styles.rentButtonAvailable
+      : styles.rentButtonNotAvailable;
+    const textButtonRentStyle = genericBook.isAvailable ? styles.textAvailable : styles.textNotAvailable;
     return (
       <View style={styles.bookContainer}>
         <View style={styles.detailContainer}>
@@ -28,9 +34,7 @@ class DetailBox extends Component {
               <Text style={styles.title}>{title}</Text>
             </View>
             <View>
-              <Text style={genericBook.isAvailable ? styles.available : styles.notAvailable}>
-                {genericBook.isAvailable ? availability.available : availability.notAvailable}
-              </Text>
+              <Text style={availabilityStyle}>{availabilityText}</Text>
             </View>
             <View>
               <Text style={styles.author}>{author}</Text>
@@ -46,24 +50,12 @@ class DetailBox extends Component {
         <View style={styles.buttonsContainer}>
           <View style={[styles.genericStyleButton, styles.wishlistButton]}>
             <TouchableOpacity onPress={this.handleAddToWishlist}>
-              <Text style={[styles.genericTextButton, styles.wishlistText]}>ADD TO WISHLIST</Text>
+              <Text style={[styles.genericTextButton, styles.wishlistText]}>{buttonText.wishlist}</Text>
             </TouchableOpacity>
           </View>
-          <View
-            style={[
-              styles.genericStyleButton,
-              genericBook.isAvailable ? styles.rentButtonAvailable : styles.rentButtonNotAvailable
-            ]}
-          >
+          <View style={[styles.genericStyleButton, rentButtonStyle]}>
             <TouchableOpacity onPress={this.handleRentBook}>
-              <Text
-                style={[
-                  styles.genericTextButton,
-                  genericBook.isAvailable ? styles.textAvailable : styles.textNotAvailable
-                ]}
-              >
-                RENT
-              </Text>
+              <Text style={[styles.genericTextButton, textButtonRentStyle]}>{buttonText.rent}</Text>
             </TouchableOpacity>
           </View>
         </View>
