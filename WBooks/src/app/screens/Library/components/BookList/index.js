@@ -15,7 +15,7 @@ class BookList extends Component {
 
   render() {
     return (
-      <View style={styles.bookContainer}>
+      <View>
         <FlatList
           data={booksInfo}
           renderItem={this.renderItem}

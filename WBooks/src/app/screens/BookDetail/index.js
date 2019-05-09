@@ -1,10 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
 
-import DetailBox from './components/DetailBox';
+import CommentBox from './components/CommentBox';
 
 function BookDetail() {
-  return <DetailBox />;
+  return <CommentBox />;
 }
 
 export default BookDetail;
