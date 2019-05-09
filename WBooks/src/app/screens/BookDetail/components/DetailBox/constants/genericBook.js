@@ -7,5 +7,5 @@ export const genericBook = {
   year: '1968',
   image_url: 'http://wolox-training.s3.amazonaws.com/uploads/6942334-M.jpg',
   isAvailable: true,
-  type: 'art'
+  type: 'Art'
 };
