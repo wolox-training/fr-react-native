@@ -48,16 +48,18 @@ class DetailBox extends Component {
           </View>
         </View>
         <View style={styles.buttonsContainer}>
-          <View style={[styles.genericStyleButton, styles.wishlistButton]}>
-            <TouchableOpacity onPress={this.handleAddToWishlist}>
-              <Text style={[styles.genericTextButton, styles.wishlistText]}>{buttonText.wishlist}</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={[styles.genericStyleButton, rentButtonStyle]}>
-            <TouchableOpacity onPress={this.handleRentBook}>
-              <Text style={[styles.genericTextButton, textButtonRentStyle]}>{buttonText.rent}</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            onPress={this.handleAddToWishlist}
+            style={[styles.genericStyleButton, styles.wishlistButton]}
+          >
+            <Text style={[styles.genericTextButton, styles.wishlistText]}>{buttonText.wishlist}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={this.handleRentBook}
+            style={[styles.genericStyleButton, rentButtonStyle]}
+          >
+            <Text style={[styles.genericTextButton, textButtonRentStyle]}>{buttonText.rent}</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
