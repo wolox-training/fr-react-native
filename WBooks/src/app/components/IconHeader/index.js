@@ -10,11 +10,11 @@ const icons = {
   bell,
   search
 };
-function IconHeader({ icon, action }) {
+function IconHeader({ icon, action, style }) {
   const particularIcon = icons[icon];
   return (
     <TouchableOpacity onPress={action}>
-      <Image style={styles.image} source={particularIcon} />
+      <Image style={[styles.image, style]} source={particularIcon} />
     </TouchableOpacity>
   );
 }

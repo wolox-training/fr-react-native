@@ -15,6 +15,15 @@ const stylesGenericOptions = StyleSheet.create({
   }
 });
 
+const stylesLibraryHeader = StyleSheet.create({
+  bellIcon: {
+    marginLeft: 15
+  },
+  searchIcon: {
+    marginRight: 15
+  }
+});
+
 export const navigationOptionsStyle = {
   headerBackground: <Image source={headerBackground} />,
   headerBackImage: <Image style={stylesGenericOptions.imageBack} source={back} />,
@@ -28,5 +37,10 @@ export const navigationOptionsStyle = {
 
 export const navigationOptionsLibrary = {
   title: NAMES.Library,
-  headerLeft: <IconHeader icon="bell" action={() => {}} />
+  headerLeft: <IconHeader style={stylesLibraryHeader.bellIcon} icon="bell" action={() => {}} />,
+  headerRight: <IconHeader style={stylesLibraryHeader.searchIcon} icon="search" action={() => {}} />
+};
+
+export const navigationOptionsBookDetail = {
+  title: NAMES.BookDetail
 };
