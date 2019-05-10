@@ -17,13 +17,19 @@ class DetailBox extends Component {
     const { navigation } = this.props;
     const book = navigation.getParam('book', {});
     const { image_url: image, title, author, year } = book;
-    const availabilityStyle = genericBook.isAvailable ? styles.available : styles.notAvailable;
-    const availabilityText = genericBook.isAvailable ? availability.available : availability.notAvailable;
-    const rentButtonStyle = genericBook.isAvailable
-      ? styles.rentButtonAvailable
-      : styles.rentButtonNotAvailable;
-    const textButtonRentStyle = genericBook.isAvailable ? styles.textAvailable : styles.textNotAvailable;
+    let availabilityStyle;
+    let availabilityText;
+    let rentButtonStyle;
     const disabled = !genericBook.isAvailable;
+    if (genericBook.isAvailable) {
+      availabilityStyle = styles.available;
+      availabilityText = availability.available;
+      rentButtonStyle = styles.rentButtonAvailable;
+    } else {
+      availabilityStyle = styles.notAvailable;
+      availabilityText = availability.notAvailable;
+      rentButtonStyle = styles.rentButtonNotAvailable;
+    }
     return (
       <View style={styles.bookContainer}>
         <View style={styles.detailContainer}>
@@ -35,16 +41,16 @@ class DetailBox extends Component {
               <Text style={styles.title}>{title}</Text>
             </View>
             <View>
-              <Text style={availabilityStyle}>{availabilityText}</Text>
+              <Text style={[availabilityStyle, styles.buttonAndAvailableDesign]}>{availabilityText}</Text>
             </View>
             <View>
-              <Text style={styles.author}>{author}</Text>
+              <Text style={styles.textInfo}>{author}</Text>
             </View>
             <View>
-              <Text style={styles.year}>{year}</Text>
+              <Text style={styles.textInfo}>{year}</Text>
             </View>
             <View>
-              <Text style={styles.type}>{genericBook.type}</Text>
+              <Text style={styles.textInfo}>{genericBook.type}</Text>
             </View>
           </View>
         </View>
@@ -53,14 +59,14 @@ class DetailBox extends Component {
             onPress={this.handleAddToWishlist}
             style={[styles.genericStyleButton, styles.wishlistButton]}
           >
-            <Text style={[styles.genericTextButton, styles.wishlistText]}>{buttonText.wishlist}</Text>
+            <Text style={[styles.buttonAndAvailableDesign, styles.wishlistText]}>{buttonText.wishlist}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={this.handleRentBook}
             style={[styles.genericStyleButton, rentButtonStyle]}
             disabled={disabled}
           >
-            <Text style={[styles.genericTextButton, textButtonRentStyle]}>{buttonText.rent}</Text>
+            <Text style={[styles.genericTextButton, styles.textAvailable]}>{buttonText.rent}</Text>
           </TouchableOpacity>
         </View>
       </View>
