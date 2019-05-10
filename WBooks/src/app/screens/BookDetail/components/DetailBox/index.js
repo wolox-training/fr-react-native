@@ -5,6 +5,7 @@ import { withNavigation } from 'react-navigation';
 import ImageBook from '../../../../components/ImageBook';
 
 import { genericBook } from './constants/genericBook';
+import { isAvailable } from './utils/isAvailable';
 import { availability, buttonText } from './constants/text';
 import styles from './styles';
 
@@ -17,19 +18,10 @@ class DetailBox extends Component {
     const { navigation } = this.props;
     const book = navigation.getParam('book', {});
     const { image_url: image, title, author, year } = book;
-    let availabilityStyle;
-    let availabilityText;
-    let rentButtonStyle;
+    const availabilityStyle = isAvailable(styles.available, styles.notAvailable);
+    const availabilityText = isAvailable(availability.available, availability.notAvailable);
+    const rentButtonStyle = isAvailable(styles.rentButtonAvailable, styles.rentButtonNotAvailable);
     const disabled = !genericBook.isAvailable;
-    if (genericBook.isAvailable) {
-      availabilityStyle = styles.available;
-      availabilityText = availability.available;
-      rentButtonStyle = styles.rentButtonAvailable;
-    } else {
-      availabilityStyle = styles.notAvailable;
-      availabilityText = availability.notAvailable;
-      rentButtonStyle = styles.rentButtonNotAvailable;
-    }
     return (
       <View style={styles.bookContainer}>
         <View style={styles.detailContainer}>
