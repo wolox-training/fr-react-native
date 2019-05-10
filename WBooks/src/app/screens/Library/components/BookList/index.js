@@ -9,7 +9,7 @@ import styles from './styles';
 class BookList extends Component {
   keyExtractor = item => `${item.id}`;
 
-  renderItem = ({ item }) => <Book image={item.image_url} title={item.title} author={item.author} />;
+  renderItem = ({ item }) => <Book id={item.id} />;
 
   separator = () => <View style={styles.separator} />;
 
