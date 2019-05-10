@@ -7,6 +7,13 @@ const styles = StyleSheet.create({
     backgroundColor: lightBlue,
     padding: 20,
     marginTop: 30
+  },
+  iconImage: {
+    width: 20,
+    height: 20
+  },
+  bellIcon: {
+    marginLeft: 15
   }
 });
 
