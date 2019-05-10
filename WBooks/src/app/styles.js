@@ -5,7 +5,7 @@ import headerBackground from '../assets/general/bc_nav_bar.png';
 import back from '../assets/navigation_bar/ic_back.png';
 import { white } from '../constants/colors';
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   imageBack: {
     height: 20,
     width: 20,
