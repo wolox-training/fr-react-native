@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { Image } from 'react-native';
 
 import headerBackground from '../assets/general/bc_nav_bar.png';
 import back from '../assets/navigation_bar/ic_back.png';
@@ -10,22 +10,7 @@ import IconTab from '../app/components/IconTab';
 
 import { getIconName } from './utils/iconName';
 
-const stylesGenericOptions = StyleSheet.create({
-  imageBack: {
-    height: 20,
-    width: 20,
-    marginLeft: 15
-  }
-});
-
-const stylesLibraryHeader = StyleSheet.create({
-  bellIcon: {
-    marginLeft: 15
-  },
-  searchIcon: {
-    marginRight: 15
-  }
-});
+import { stylesGenericOptions, stylesLibraryHeader } from './navigationOptionsStyles';
 
 export const defaultNavigationOptionsTab = ({ navigation }) => ({
   tabBarIcon: ({ focused }) => {

@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native';
 
+import { HEIGHT_ICON, WIDTH_ICON } from '../../../constants/sizes';
+
 const styles = StyleSheet.create({
   image: {
-    height: 20,
-    width: 20
+    height: HEIGHT_ICON,
+    width: WIDTH_ICON
   }
 });
 
