@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { View, Text, Image } from 'react-native';
 
 import styles from './styles';
@@ -10,9 +10,9 @@ function Comment({ image, user, comment }) {
         <Image style={styles.image} source={{ uri: image }} />
       </View>
       <View style={styles.infoContainer}>
-        <View>
+        <Fragment>
           <Text style={styles.userText}>{user}</Text>
-        </View>
+        </Fragment>
         <View style={styles.textCommentContainer}>
           <Text style={styles.commentText}>{comment}</Text>
         </View>
