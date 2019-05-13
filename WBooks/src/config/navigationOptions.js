@@ -31,7 +31,6 @@ export const defaultNavigationOptionsTab = ({ navigation }) => ({
   tabBarIcon: ({ focused }) => {
     const { routeName } = navigation.state;
     const iconName = `${getIconName(routeName)}${focused ? 'Active' : 'Passive'}`;
-    // You can return any component that you like here!
     return <IconTab icon={iconName} />;
   }
 });
