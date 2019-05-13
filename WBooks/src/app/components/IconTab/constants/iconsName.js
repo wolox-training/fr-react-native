@@ -21,3 +21,6 @@ export const icons = {
   wishlistActive,
   wishlistPassive
 };
+
+export const ACTIVE = 'Active';
+export const PASSIVE = 'Passive';

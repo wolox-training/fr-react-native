@@ -8,14 +8,12 @@ import { NAMES } from '../constants/screenNames';
 import IconHeader from '../app/components/IconHeader';
 import IconTab from '../app/components/IconTab';
 
-import { getIconName } from './utils/iconName';
 import { stylesGenericOptions, stylesLibraryHeader } from './navigationOptionsStyles';
 
 export const defaultNavigationOptionsTab = ({ navigation }) => ({
   tabBarIcon: ({ focused }) => {
     const { routeName } = navigation.state;
-    const iconName = `${getIconName(routeName)}${focused ? 'Active' : 'Passive'}`;
-    return <IconTab icon={iconName} />;
+    return <IconTab route={routeName} focused={focused}/>;
   }
 });
 
