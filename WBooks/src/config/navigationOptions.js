@@ -56,3 +56,19 @@ export const navigationOptionsLibrary = {
 export const navigationOptionsBookDetail = {
   title: NAMES.BookDetail
 };
+
+export const navigationOptionsWishlist = {
+  title: NAMES.Wishlist
+};
+
+export const navigationOptionsAddnew = {
+  title: NAMES.Addnew
+};
+
+export const navigationOptionsRentals = {
+  title: NAMES.Rentals
+};
+
+export const navigationOptionsSettings = {
+  title: NAMES.Settings
+};

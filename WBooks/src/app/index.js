@@ -6,7 +6,11 @@ import {
   navigationOptionsStyle,
   navigationOptionsLibrary,
   navigationOptionsBookDetail,
-  defaultNavigationOptionsTab
+  defaultNavigationOptionsTab,
+  navigationOptionsAddnew,
+  navigationOptionsRentals,
+  navigationOptionsSettings,
+  navigationOptionsWishlist
 } from '../config/navigationOptions';
 
 import Library from './screens/Library';
@@ -32,13 +36,61 @@ const LibraryNavigator = createStackNavigator(
   }
 );
 
+const WishlistNavigator = createStackNavigator(
+  {
+    [ROUTES.Wishlist]: {
+      screen: Wishlist,
+      navigationOptions: navigationOptionsWishlist
+    }
+  },
+  {
+    defaultNavigationOptions: navigationOptionsStyle
+  }
+);
+
+const AddNewNavigator = createStackNavigator(
+  {
+    [ROUTES.Addnew]: {
+      screen: Addnew,
+      navigationOptions: navigationOptionsAddnew
+    }
+  },
+  {
+    defaultNavigationOptions: navigationOptionsStyle
+  }
+);
+
+const RentalsNavigator = createStackNavigator(
+  {
+    [ROUTES.Rentals]: {
+      screen: Rentals,
+      navigationOptions: navigationOptionsRentals
+    }
+  },
+  {
+    defaultNavigationOptions: navigationOptionsStyle
+  }
+);
+
+const SettingsNavigator = createStackNavigator(
+  {
+    [ROUTES.Settings]: {
+      screen: Settings,
+      navigationOptions: navigationOptionsSettings
+    }
+  },
+  {
+    defaultNavigationOptions: navigationOptionsStyle
+  }
+);
+
 const TabNavigator = createBottomTabNavigator(
   {
     Library: LibraryNavigator,
-    Wishlist,
-    Addnew,
-    Rentals,
-    Settings
+    Wishlist: WishlistNavigator,
+    Addnew: AddNewNavigator,
+    Rentals: RentalsNavigator,
+    Settings: SettingsNavigator
   },
   {
     defaultNavigationOptions: defaultNavigationOptionsTab
