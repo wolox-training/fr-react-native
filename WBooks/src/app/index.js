@@ -1,15 +1,20 @@
 import React from 'react';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
 
 import { ROUTES } from '../constants/routes';
 import {
   navigationOptionsStyle,
   navigationOptionsLibrary,
-  navigationOptionsBookDetail
+  navigationOptionsBookDetail,
+  defaultNavigationOptionsTab
 } from '../config/navigationOptions';
 
 import Library from './screens/Library';
 import BookDetail from './screens/BookDetail';
+import Wishlist from './screens/Wishlist';
+import Addnew from './screens/Addnew';
+import Rentals from './screens/Rentals';
+import Settings from './screens/Settings';
 
 const LibraryNavigator = createStackNavigator(
   {
@@ -27,7 +32,20 @@ const LibraryNavigator = createStackNavigator(
   }
 );
 
-const AppNavigator = createAppContainer(LibraryNavigator);
+const TabNavigator = createBottomTabNavigator(
+  {
+    Library: LibraryNavigator,
+    Wishlist,
+    Addnew,
+    Rentals,
+    Settings
+  },
+  {
+    defaultNavigationOptions: defaultNavigationOptionsTab
+  }
+);
+
+const AppNavigator = createAppContainer(TabNavigator);
 
 function MyApp() {
   return <AppNavigator />;
