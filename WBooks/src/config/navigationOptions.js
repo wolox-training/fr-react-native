@@ -5,9 +5,10 @@ import headerBackground from '../assets/general/bc_nav_bar.png';
 import back from '../assets/navigation_bar/ic_back.png';
 import { white } from '../constants/colors';
 import { NAMES } from '../constants/screenNames';
-import { ROUTES } from '../constants/routes';
 import IconHeader from '../app/components/IconHeader';
 import IconTab from '../app/components/IconTab';
+
+import { getIconName } from './utils/iconName';
 
 const stylesGenericOptions = StyleSheet.create({
   imageBack: {
@@ -29,19 +30,7 @@ const stylesLibraryHeader = StyleSheet.create({
 export const defaultNavigationOptionsTab = ({ navigation }) => ({
   tabBarIcon: ({ focused }) => {
     const { routeName } = navigation.state;
-    let iconName;
-    if (routeName === ROUTES.Library) {
-      iconName = 'library';
-    } else if (routeName === ROUTES.Settings) {
-      iconName = `settings`;
-    } else if (routeName === ROUTES.Wishlist) {
-      iconName = `wishlist`;
-    } else if (routeName === ROUTES.Rentals) {
-      iconName = `myRentals`;
-    } else if (routeName === ROUTES.AddNew) {
-      iconName = `addNew`;
-    }
-    iconName = `${iconName}${focused ? 'Active' : 'Passive'}`;
+    const iconName = `${getIconName(routeName)}${focused ? 'Active' : 'Passive'}`;
     // You can return any component that you like here!
     return <IconTab icon={iconName} />;
   }

@@ -2,7 +2,7 @@ export const ROUTES = {
   Library: 'Library',
   BookDetail: 'BookDetail',
   Wishlist: 'Wishlist',
-  AddNew: 'Addnew',
+  Addnew: 'Addnew',
   Rentals: 'Rentals',
   Settings: 'Settings'
 };
