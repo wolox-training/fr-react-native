@@ -9,7 +9,6 @@ import IconHeader from '../app/components/IconHeader';
 import IconTab from '../app/components/IconTab';
 
 import { getIconName } from './utils/iconName';
-
 import { stylesGenericOptions, stylesLibraryHeader } from './navigationOptionsStyles';
 
 export const defaultNavigationOptionsTab = ({ navigation }) => ({
