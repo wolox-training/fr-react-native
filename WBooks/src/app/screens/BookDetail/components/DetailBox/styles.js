@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native';
 
 import { white, darkGray, red, green, blue, lightGray, veryBlue } from '../../../../../constants/colors';
 
+import { COMUNTEXT } from '../../../../../constants/sizes';
+
 const styles = StyleSheet.create({
   bookContainer: {
     flexDirection: 'column',
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
     color: darkGray
   },
   buttonAndAvailableDesign: {
-    fontSize: 15,
+    fontSize: COMUNTEXT,
     fontWeight: 'bold'
   },
   available: {
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
   },
   textInfo: {
     color: darkGray,
-    fontSize: 15
+    fontSize: COMUNTEXT
   },
   buttonsContainer: {
     marginTop: 15
