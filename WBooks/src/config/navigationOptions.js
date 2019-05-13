@@ -46,28 +46,12 @@ export const navigationOptionsStyle = {
   }
 };
 
-export const navigationOptionsLibrary = {
-  title: NAMES.Library,
+export const navigationOptionsTitle = name => ({
+  title: NAMES[name]
+});
+
+export const navigationOptionsLibrary = name => ({
+  ...navigationOptionsTitle(name),
   headerLeft: <IconHeader style={stylesLibraryHeader.bellIcon} icon="bell" action={() => {}} />,
   headerRight: <IconHeader style={stylesLibraryHeader.searchIcon} icon="search" action={() => {}} />
-};
-
-export const navigationOptionsBookDetail = {
-  title: NAMES.BookDetail
-};
-
-export const navigationOptionsWishlist = {
-  title: NAMES.Wishlist
-};
-
-export const navigationOptionsAddnew = {
-  title: NAMES.Addnew
-};
-
-export const navigationOptionsRentals = {
-  title: NAMES.Rentals
-};
-
-export const navigationOptionsSettings = {
-  title: NAMES.Settings
-};
+});
