@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { View, FlatList } from 'react-native';
 
 import booksInfo from '../../../../../constants/books';
@@ -15,14 +15,14 @@ class BookList extends Component {
 
   render() {
     return (
-      <View style={styles.bookContainer}>
+      <Fragment>
         <FlatList
           data={booksInfo}
           renderItem={this.renderItem}
           keyExtractor={this.keyExtractor}
           ItemSeparatorComponent={this.separator}
         />
-      </View>
+      </Fragment>
     );
   }
 }
