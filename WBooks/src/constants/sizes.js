@@ -1,3 +1,3 @@
-export const WIDTHICON = 20;
-export const HEIGHTICON = 20;
-export const COMUNTEXT = 15;
+export const WIDTH_ICON = 20;
+export const HEIGHT_ICON = 20;
+export const COMMON_TEXT = 15;

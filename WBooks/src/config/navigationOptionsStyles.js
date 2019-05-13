@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native';
 
+import { HEIGHT_ICON, WIDTH_ICON } from '../constants/sizes';
+
 export const stylesGenericOptions = StyleSheet.create({
   imageBack: {
-    height: 20,
-    width: 20,
+    height: HEIGHT_ICON,
+    width: WIDTH_ICON,
     marginLeft: 15
   }
 });

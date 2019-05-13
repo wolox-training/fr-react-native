@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { darkGray, dark } from '../../../../../../../constants/colors';
-
-import { COMUNTEXT } from '../../../../../../../constants/sizes';
+import { COMMON_TEXT } from '../../../../../../../constants/sizes';
 
 const styles = StyleSheet.create({
   commentContainer: {
@@ -20,12 +19,12 @@ const styles = StyleSheet.create({
   },
   userText: {
     color: dark,
-    fontSize: COMUNTEXT,
+    fontSize: COMMON_TEXT,
     fontWeight: 'bold'
   },
   commentText: {
     color: darkGray,
-    fontSize: COMUNTEXT
+    fontSize: COMMON_TEXT
   },
   textCommentContainer: {
     marginTop: 10,
