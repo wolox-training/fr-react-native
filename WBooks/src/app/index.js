@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
+import { ROUTES } from '@constants/routes';
 
-import { ROUTES } from '../constants/routes';
 import {
   navigationOptionsStyle,
   navigationOptionsLibrary,

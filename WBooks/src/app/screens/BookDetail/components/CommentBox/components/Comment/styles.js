@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
-
-import { darkGray, dark } from '../../../../../../../constants/colors';
-import { COMMON_TEXT } from '../../../../../../../constants/sizes';
+import { darkGray, dark } from '@constants/colors';
+import { COMMON_TEXT } from '@constants/sizes';
 
 const styles = StyleSheet.create({
   commentContainer: {

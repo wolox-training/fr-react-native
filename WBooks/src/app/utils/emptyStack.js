@@ -1,6 +1,5 @@
 import { createStackNavigator } from 'react-navigation';
-
-import { navigationOptionsStyle, navigationOptionsTitle } from '../../config/navigationOptions';
+import { navigationOptionsStyle, navigationOptionsTitle } from '@config/navigationOptions';
 
 export const createEmptyStack = (component, route) =>
   createStackNavigator(

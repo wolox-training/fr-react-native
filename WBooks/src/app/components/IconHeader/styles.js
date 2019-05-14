@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-
-import { HEIGHT_ICON, WIDTH_ICON } from '../../../constants/sizes';
+import { HEIGHT_ICON, WIDTH_ICON } from '@constants/sizes';
 
 const styles = StyleSheet.create({
   image: {
