@@ -8,6 +8,7 @@ import settingsActive from '../../../../assets/tool_bar/ic_settings_active.png';
 import settingsPassive from '../../../../assets/tool_bar/ic_settings_passive.png';
 import wishlistActive from '../../../../assets/tool_bar/ic_wishlist_active.png';
 import wishlistPassive from '../../../../assets/tool_bar/ic_wishlist_passive.png';
+import { ROUTES } from '../../../../constants/routes';
 
 export const icons = {
   addNewActive,
@@ -20,6 +21,14 @@ export const icons = {
   settingsPassive,
   wishlistActive,
   wishlistPassive
+};
+
+export const mapRouteToIcon = {
+  [ROUTES.Library]: 'library',
+  [ROUTES.Wishlist]: 'wishlist',
+  [ROUTES.Addnew]: 'addNew',
+  [ROUTES.Rentals]: 'myRentals',
+  [ROUTES.Settings]: 'settings'
 };
 
 export const ACTIVE = 'Active';
