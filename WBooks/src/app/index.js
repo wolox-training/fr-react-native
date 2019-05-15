@@ -1,18 +1,15 @@
 import React from 'react';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
+import { ROUTES } from '@constants/routes';
 
-import { ROUTES } from '../constants/routes';
 import {
   navigationOptionsStyle,
   navigationOptionsLibrary,
-  navigationOptionsBookDetail,
-  defaultNavigationOptionsTab,
-  navigationOptionsAddnew,
-  navigationOptionsRentals,
-  navigationOptionsSettings,
-  navigationOptionsWishlist
+  navigationOptionsTitle,
+  defaultNavigationOptionsTab
 } from '../config/navigationOptions';
 
+import { createEmptyStack } from './utils/emptyStack';
 import Library from './screens/Library';
 import BookDetail from './screens/BookDetail';
 import Wishlist from './screens/Wishlist';
@@ -24,11 +21,11 @@ const LibraryNavigator = createStackNavigator(
   {
     [ROUTES.Library]: {
       screen: Library,
-      navigationOptions: navigationOptionsLibrary
+      navigationOptions: navigationOptionsLibrary(ROUTES.Library)
     },
     [ROUTES.BookDetail]: {
       screen: BookDetail,
-      navigationOptions: navigationOptionsBookDetail
+      navigationOptions: navigationOptionsTitle(ROUTES.BookDetail)
     }
   },
   {
@@ -36,53 +33,10 @@ const LibraryNavigator = createStackNavigator(
   }
 );
 
-const WishlistNavigator = createStackNavigator(
-  {
-    [ROUTES.Wishlist]: {
-      screen: Wishlist,
-      navigationOptions: navigationOptionsWishlist
-    }
-  },
-  {
-    defaultNavigationOptions: navigationOptionsStyle
-  }
-);
-
-const AddNewNavigator = createStackNavigator(
-  {
-    [ROUTES.Addnew]: {
-      screen: Addnew,
-      navigationOptions: navigationOptionsAddnew
-    }
-  },
-  {
-    defaultNavigationOptions: navigationOptionsStyle
-  }
-);
-
-const RentalsNavigator = createStackNavigator(
-  {
-    [ROUTES.Rentals]: {
-      screen: Rentals,
-      navigationOptions: navigationOptionsRentals
-    }
-  },
-  {
-    defaultNavigationOptions: navigationOptionsStyle
-  }
-);
-
-const SettingsNavigator = createStackNavigator(
-  {
-    [ROUTES.Settings]: {
-      screen: Settings,
-      navigationOptions: navigationOptionsSettings
-    }
-  },
-  {
-    defaultNavigationOptions: navigationOptionsStyle
-  }
-);
+const WishlistNavigator = createEmptyStack(Wishlist, ROUTES.Wishlist);
+const AddNewNavigator = createEmptyStack(Addnew, ROUTES.Addnew);
+const RentalsNavigator = createEmptyStack(Rentals, ROUTES.Rentals);
+const SettingsNavigator = createEmptyStack(Settings, ROUTES.Settings);
 
 const TabNavigator = createBottomTabNavigator(
   {

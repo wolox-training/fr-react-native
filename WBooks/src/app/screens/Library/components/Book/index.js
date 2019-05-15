@@ -3,10 +3,10 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 
-import { ROUTES } from '../../../../../constants/routes';
-import { navigationProptype } from '../../../../../propTypes/navigation';
-import { getBookById } from '../../../../../utils/book';
-import ImageBook from '../../../../components/ImageBook';
+import { ROUTES } from '@constants/routes';
+import { navigationProptype } from '@propTypes/navigation';
+import { getBookById } from '@utils/book';
+import ImageBook from '@app/components/ImageBook';
 
 import styles from './styles';
 

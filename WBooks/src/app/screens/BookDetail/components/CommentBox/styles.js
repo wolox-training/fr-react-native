@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { linkBlue } from '../../../../../constants/colors';
+import { linkBlue } from '@constants/colors';
+import { COMMON_TEXT } from '@constants/sizes';
 
 const styles = StyleSheet.create({
   separator: {
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
   },
   textViewAll: {
     color: linkBlue,
-    fontSize: 15
+    fontSize: COMMON_TEXT
   }
 });
 

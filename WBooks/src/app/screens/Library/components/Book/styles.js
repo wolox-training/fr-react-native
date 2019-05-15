@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-
-import { white, darkGray } from '../../../../../constants/colors';
+import { white, darkGray } from '@constants/colors';
 
 const styles = StyleSheet.create({
   bookContainer: {

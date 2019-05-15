@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { white, darkGray, red, green, blue, lightGray, veryBlue } from '../../../../../constants/colors';
+import { COMMON_TEXT } from '../../../../../constants/sizes';
 
 const styles = StyleSheet.create({
   bookContainer: {
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     color: darkGray
   },
   buttonAndAvailableDesign: {
-    fontSize: 15,
+    fontSize: COMMON_TEXT,
     fontWeight: 'bold'
   },
   available: {
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
   },
   textInfo: {
     color: darkGray,
-    fontSize: 15
+    fontSize: COMMON_TEXT
   },
   buttonsContainer: {
     marginTop: 15

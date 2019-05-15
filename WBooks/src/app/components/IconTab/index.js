@@ -2,11 +2,12 @@ import React from 'react';
 import { Image } from 'react-native';
 
 import styles from './styles';
-import { icons } from './constants/iconsName';
+import { icons, ACTIVE, PASSIVE, mapRouteToIcon } from './constants/iconsName';
 
-function IconTab({ icon }) {
-  const particularIcon = icons[icon];
-  return <Image style={[styles.image]} source={particularIcon} />;
+function IconTab({ route, focused }) {
+  const iconName = `${mapRouteToIcon[route]}${focused ? ACTIVE : PASSIVE}`;
+  const particularIcon = icons[iconName];
+  return <Image style={styles.image} source={particularIcon} />;
 }
 
 export default IconTab;
