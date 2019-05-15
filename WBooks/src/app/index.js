@@ -16,6 +16,7 @@ import Wishlist from './screens/Wishlist';
 import Addnew from './screens/Addnew';
 import Rentals from './screens/Rentals';
 import Settings from './screens/Settings';
+import Login from './screens/Login';
 
 const LibraryNavigator = createStackNavigator(
   {
@@ -54,7 +55,7 @@ const TabNavigator = createBottomTabNavigator(
 const AppNavigator = createAppContainer(TabNavigator);
 
 function MyApp() {
-  return <AppNavigator />;
+  return <Login />;
 }
 
 export default MyApp;
