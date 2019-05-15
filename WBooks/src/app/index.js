@@ -1,25 +1,31 @@
 import React from 'react';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
+import { ROUTES } from '@constants/routes';
 
-import { ROUTES } from '../constants/routes';
 import {
   navigationOptionsStyle,
   navigationOptionsLibrary,
-  navigationOptionsBookDetail
+  navigationOptionsTitle,
+  defaultNavigationOptionsTab
 } from '../config/navigationOptions';
 
+import { createEmptyStack } from './utils/emptyStack';
 import Library from './screens/Library';
 import BookDetail from './screens/BookDetail';
+import Wishlist from './screens/Wishlist';
+import Addnew from './screens/Addnew';
+import Rentals from './screens/Rentals';
+import Settings from './screens/Settings';
 
 const LibraryNavigator = createStackNavigator(
   {
     [ROUTES.Library]: {
       screen: Library,
-      navigationOptions: navigationOptionsLibrary
+      navigationOptions: navigationOptionsLibrary(ROUTES.Library)
     },
     [ROUTES.BookDetail]: {
       screen: BookDetail,
-      navigationOptions: navigationOptionsBookDetail
+      navigationOptions: navigationOptionsTitle(ROUTES.BookDetail)
     }
   },
   {
@@ -27,7 +33,25 @@ const LibraryNavigator = createStackNavigator(
   }
 );
 
-const AppNavigator = createAppContainer(LibraryNavigator);
+const WishlistNavigator = createEmptyStack(Wishlist, ROUTES.Wishlist);
+const AddNewNavigator = createEmptyStack(Addnew, ROUTES.Addnew);
+const RentalsNavigator = createEmptyStack(Rentals, ROUTES.Rentals);
+const SettingsNavigator = createEmptyStack(Settings, ROUTES.Settings);
+
+const TabNavigator = createBottomTabNavigator(
+  {
+    Library: LibraryNavigator,
+    Wishlist: WishlistNavigator,
+    Addnew: AddNewNavigator,
+    Rentals: RentalsNavigator,
+    Settings: SettingsNavigator
+  },
+  {
+    defaultNavigationOptions: defaultNavigationOptionsTab
+  }
+);
+
+const AppNavigator = createAppContainer(TabNavigator);
 
 function MyApp() {
   return <AppNavigator />;

@@ -6,8 +6,16 @@ import back from '../assets/navigation_bar/ic_back.png';
 import { white } from '../constants/colors';
 import { NAMES } from '../constants/screenNames';
 import IconHeader from '../app/components/IconHeader';
+import IconTab from '../app/components/IconTab';
 
 import { stylesGenericOptions, stylesLibraryHeader } from './navigationOptionsStyles';
+
+export const defaultNavigationOptionsTab = ({ navigation }) => ({
+  tabBarIcon: ({ focused }) => {
+    const { routeName } = navigation.state;
+    return <IconTab route={routeName} focused={focused}/>;
+  }
+});
 
 export const navigationOptionsStyle = {
   headerBackground: <Image source={headerBackground} />,
@@ -20,12 +28,12 @@ export const navigationOptionsStyle = {
   }
 };
 
-export const navigationOptionsLibrary = {
-  title: NAMES.Library,
+export const navigationOptionsTitle = name => ({
+  title: NAMES[name]
+});
+
+export const navigationOptionsLibrary = name => ({
+  ...navigationOptionsTitle(name),
   headerLeft: <IconHeader style={stylesLibraryHeader.bellIcon} icon="bell" action={() => {}} />,
   headerRight: <IconHeader style={stylesLibraryHeader.searchIcon} icon="search" action={() => {}} />
-};
-
-export const navigationOptionsBookDetail = {
-  title: NAMES.BookDetail
-};
+});

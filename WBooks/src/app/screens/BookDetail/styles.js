@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-
-import { lightBlue, white } from '../../../constants/colors';
+import { lightBlue, white } from '@constants/colors';
 
 const styles = StyleSheet.create({
   bookDetailContainer: {
