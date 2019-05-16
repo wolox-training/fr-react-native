@@ -1,5 +1,10 @@
 import React from 'react';
-import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
+import {
+  createStackNavigator,
+  createAppContainer,
+  createBottomTabNavigator,
+  createSwitchNavigator
+} from 'react-navigation';
 import { ROUTES } from '@constants/routes';
 
 import {
@@ -17,6 +22,7 @@ import Addnew from './screens/Addnew';
 import Rentals from './screens/Rentals';
 import Settings from './screens/Settings';
 import Login from './screens/Login';
+import AuthLoading from './screens/AuthLoading';
 
 const LibraryNavigator = createStackNavigator(
   {
@@ -41,21 +47,31 @@ const SettingsNavigator = createEmptyStack(Settings, ROUTES.Settings);
 
 const TabNavigator = createBottomTabNavigator(
   {
-    Library: LibraryNavigator,
-    Wishlist: WishlistNavigator,
-    Addnew: AddNewNavigator,
-    Rentals: RentalsNavigator,
-    Settings: SettingsNavigator
+    [ROUTES.Library]: LibraryNavigator,
+    [ROUTES.Wishlist]: WishlistNavigator,
+    [ROUTES.Addnew]: AddNewNavigator,
+    [ROUTES.Rentals]: RentalsNavigator,
+    [ROUTES.Settings]: SettingsNavigator
   },
   {
     defaultNavigationOptions: defaultNavigationOptionsTab
   }
 );
 
-const AppNavigator = createAppContainer(TabNavigator);
+const SwitchNavigator = createSwitchNavigator(
+  {
+    [ROUTES.AuthLoading]: AuthLoading,
+    [ROUTES.App]: TabNavigator,
+    [ROUTES.Auth]: Login
+  },
+  {
+    initialRouteName: 'AuthLoading'
+  }
+);
+const AppNavigator = createAppContainer(SwitchNavigator);
 
 function MyApp() {
-  return <Login />;
+  return <AppNavigator />;
 }
 
 export default MyApp;

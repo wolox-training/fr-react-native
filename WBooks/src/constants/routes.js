@@ -4,5 +4,8 @@ export const ROUTES = {
   Wishlist: 'Wishlist',
   Addnew: 'Addnew',
   Rentals: 'Rentals',
-  Settings: 'Settings'
+  Settings: 'Settings',
+  App: 'App',
+  Auth: 'Auth',
+  AuthLoading: 'AuthLoading'
 };
