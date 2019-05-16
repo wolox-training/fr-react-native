@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, TextInput, Text, View } from 'react-native';
+import { ImageBackground, TextInput, Text } from 'react-native';
 import backgroundImage from '@assets/general/bc_inicio.png';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
