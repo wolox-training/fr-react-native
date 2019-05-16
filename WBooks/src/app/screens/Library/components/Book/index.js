@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 import { ROUTES } from '@constants/routes';
 import { navigationProptype } from '@propTypes/navigation';
 import { getBookById } from '@utils/book';
-import ImageBook from '@app/components/ImageBook';
 
-import styles from './styles';
+import BookLayout from './layout';
 
 class Book extends Component {
   state = {
@@ -31,21 +29,7 @@ class Book extends Component {
     const {
       book: { image_url: image, title, author }
     } = this.state;
-    return (
-      <TouchableOpacity style={styles.bookContainer} onPress={this.handlePress}>
-        <View style={styles.bookImage}>
-          <ImageBook style={styles.image} source={image} />
-        </View>
-        <View style={styles.titleAndAuthor}>
-          <View>
-            <Text style={styles.title}>{title}</Text>
-          </View>
-          <View style={styles.authorContainer}>
-            <Text style={styles.author}>{author}</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
+    return <BookLayout title={title} image={image} author={author} handlePress={this.handlePress} />;
   }
 }
 
