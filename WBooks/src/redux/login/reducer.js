@@ -1,6 +1,6 @@
 import { LOGIN_TYPES } from './constants/loginTypes';
 
-export function itemsHasErrored(state = false, action) {
+export function loginHasErrored(state = false, action) {
   switch (action.type) {
     case LOGIN_TYPES.LOGIN_HAS_ERRORED:
       return action.hasErrored;
@@ -8,7 +8,7 @@ export function itemsHasErrored(state = false, action) {
       return state;
   }
 }
-export function itemsIsLoading(state = false, action) {
+export function loginIsLoading(state = false, action) {
   switch (action.type) {
     case LOGIN_TYPES.LOGIN_IS_LOADING:
       return action.isLoading;

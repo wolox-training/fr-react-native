@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
+import { ROUTES } from '@constants/routes';
+import { login } from '@redux/login/actions';
+import { connect } from 'react-redux';
 
 import LoginLayout from './layout';
-import { ROUTES } from '@constants/routes';
 
 class Login extends Component {
   state = {
@@ -22,8 +24,31 @@ class Login extends Component {
   };
 
   render() {
-    return <LoginLayout updateUser={this.updateUser} updatePassword={this.updatePassword} logInSuccessful={this.logInSuccessful}/>;
+    return (
+      <LoginLayout
+        updateUser={this.updateUser}
+        updatePassword={this.updatePassword}
+        logInSuccessful={this.logInSuccessful}
+      />
+    );
   }
 }
 
-export default withNavigation(Login);
+const mapStateToProps = state => {
+  return {
+    hasErrored: state.loginHasErrored,
+    isLoading: state.loginIsLoading,
+    data: state.loginAuthSuccess
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (user, password) => dispatch(login(user, password))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withNavigation(Login));

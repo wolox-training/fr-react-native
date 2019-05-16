@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import { itemsHasErrored, itemsIsLoading, loginAuthSuccess } from './login/reducer';
+import { loginHasErrored, loginIsLoading, loginAuthSuccess } from './login/reducer';
 
 const rootReducer = combineReducers({
-  itemsHasErrored,
-  itemsIsLoading,
+  loginHasErrored,
+  loginIsLoading,
   loginAuthSuccess
 });
 
