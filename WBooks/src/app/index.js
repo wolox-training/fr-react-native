@@ -65,7 +65,7 @@ const SwitchNavigator = createSwitchNavigator(
     [ROUTES.Auth]: Login
   },
   {
-    initialRouteName: 'AuthLoading'
+    initialRouteName: ROUTES.AuthLoading
   }
 );
 const AppNavigator = createAppContainer(SwitchNavigator);

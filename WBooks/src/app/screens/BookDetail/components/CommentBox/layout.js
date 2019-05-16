@@ -1,12 +1,12 @@
-import React from 'react';
-import { View, FlatList, TouchableOpacity, Text, ScrollView } from 'react-native';
+import React, { Fragment } from 'react';
+import { FlatList, TouchableOpacity, Text } from 'react-native';
 
 import { viewAll } from './constants/text';
-
 import styles from './styles';
+
 function CommentBoxLayout({ data, keyExtractor, renderItem, ItemSeparatorComponent }) {
   return (
-    <ScrollView>
+    <Fragment>
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -16,7 +16,7 @@ function CommentBoxLayout({ data, keyExtractor, renderItem, ItemSeparatorCompone
       <TouchableOpacity style={styles.viewAll}>
         <Text style={styles.textViewAll}>{viewAll}</Text>
       </TouchableOpacity>
-    </ScrollView>
+    </Fragment>
   );
 }
 
