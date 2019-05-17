@@ -14,7 +14,7 @@ export function loginIsLoading(bool) {
     isLoading: bool
   };
 }
-export function loginAuthSuccess(data) {
+export function loginAuthSuccessData(data) {
   return {
     type: LOGIN_TYPES.LOGIN_AUTH_SUCCESS,
     data
@@ -25,16 +25,13 @@ export const login = (email, password) => {
   return async dispatch => {
     dispatch(loginIsLoading(true));
     try {
-      console.log('antes de llamada a api');
       const response = await loginAppp(email, password);
-      console.log(response);
       if (!response.ok) {
         throw Error(response.statusText);
       }
       dispatch(loginIsLoading(false));
-      dispatch(loginAuthSuccess(response.data));
+      dispatch(loginAuthSuccessData(response.data));
     } catch (error) {
-      console.log(error);
       dispatch(loginHasErrored(true));
     }
   };

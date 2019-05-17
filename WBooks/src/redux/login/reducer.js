@@ -1,6 +1,6 @@
 import { LOGIN_TYPES } from './constants/loginTypes';
 
-export function loginHasErrored(state = false, action) {
+function loginHasErrored(state = false, action) {
   switch (action.type) {
     case LOGIN_TYPES.LOGIN_HAS_ERRORED:
       return action.hasErrored;
@@ -8,7 +8,7 @@ export function loginHasErrored(state = false, action) {
       return state;
   }
 }
-export function loginIsLoading(state = false, action) {
+function loginIsLoading(state = false, action) {
   switch (action.type) {
     case LOGIN_TYPES.LOGIN_IS_LOADING:
       return action.isLoading;
@@ -16,7 +16,7 @@ export function loginIsLoading(state = false, action) {
       return state;
   }
 }
-export function loginAuthSuccess(state = {}, action) {
+function loginAuthSuccessData(state = {}, action) {
   switch (action.type) {
     case LOGIN_TYPES.LOGIN_AUTH_SUCCESS:
       return action.data;
@@ -24,3 +24,9 @@ export function loginAuthSuccess(state = {}, action) {
       return state;
   }
 }
+
+export const loginReducers = {
+  loginHasErrored,
+  loginIsLoading,
+  loginAuthSuccessData
+};

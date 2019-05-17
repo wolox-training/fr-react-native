@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
 
-import { loginHasErrored, loginIsLoading, loginAuthSuccess } from './login/reducer';
+import { loginReducers } from './login/reducer';
 
 const rootReducer = combineReducers({
-  loginHasErrored,
-  loginIsLoading,
-  loginAuthSuccess
+  ...loginReducers
 });
 
 export default rootReducer;
