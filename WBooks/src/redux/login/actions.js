@@ -1,4 +1,4 @@
-import { loginAppp } from '@services/login';
+import { loginApp } from '@services/login';
 
 import { LOGIN_TYPES } from './constants/loginTypes';
 
@@ -25,11 +25,12 @@ export const login = (email, password) => {
   return async dispatch => {
     dispatch(loginIsLoading(true));
     try {
-      const response = await loginAppp(email, password);
+      const response = await loginApp(email, password);
       if (!response.ok) {
         throw Error(response.statusText);
       }
       dispatch(loginIsLoading(false));
+      dispatch(loginHasErrored(false));
       dispatch(loginAuthSuccessData(response.data));
     } catch (error) {
       dispatch(loginHasErrored(true));

@@ -12,12 +12,15 @@ function LoginLayout({ updateUser, updatePassword, logInSuccessful }) {
       <TextInput
         style={[styles.textInput, styles.container]}
         placeholder={USER_PLACE_HOLDER}
+        autoCapitalize="none"
         textAlign="center"
         onChangeText={text => updateUser(text)}
       />
       <TextInput
         style={[styles.textInput, styles.container]}
         placeholder={PASSWORD_PLACE_HOLDER}
+        autoCapitalize="none"
+        secureTextEntry
         textAlign="center"
         onChangeText={text => updatePassword(text)}
       />
