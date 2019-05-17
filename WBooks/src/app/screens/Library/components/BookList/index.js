@@ -1,10 +1,11 @@
-import React, { Component, Fragment } from 'react';
-import { View, FlatList } from 'react-native';
-
+import React, { Component } from 'react';
+import { View } from 'react-native';
 import booksInfo from '@constants/books';
+
 import Book from '../Book';
 
 import styles from './styles';
+import BookListLayout from './layout';
 
 class BookList extends Component {
   keyExtractor = item => `${item.id}`;
@@ -15,14 +16,12 @@ class BookList extends Component {
 
   render() {
     return (
-      <Fragment>
-        <FlatList
-          data={booksInfo}
-          renderItem={this.renderItem}
-          keyExtractor={this.keyExtractor}
-          ItemSeparatorComponent={this.separator}
-        />
-      </Fragment>
+      <BookListLayout
+        data={booksInfo}
+        renderItem={this.renderItem}
+        keyExtractor={this.keyExtractor}
+        ItemSeparatorComponent={this.separator}
+      />
     );
   }
 }
