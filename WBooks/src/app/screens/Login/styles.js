@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   container: {
     height: 42,
-    width: 330
+    width: '90%'
   },
   buttonContainer: {
     backgroundColor: veryBlue,

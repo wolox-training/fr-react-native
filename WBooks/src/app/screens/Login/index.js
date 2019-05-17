@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
+import { ROUTES } from '@constants/routes';
 
 import LoginLayout from './layout';
-import { ROUTES } from '@constants/routes';
 
 class Login extends Component {
   state = {
@@ -10,9 +10,7 @@ class Login extends Component {
     password: ''
   };
 
-  updateUser = text => this.setState({ user: text });
-
-  updatePassword = text => this.setState({ password: text });
+  update = param => text => this.setState({ [param]: text });
 
   logInSuccessful = () => {
     const {
@@ -22,7 +20,13 @@ class Login extends Component {
   };
 
   render() {
-    return <LoginLayout updateUser={this.updateUser} updatePassword={this.updatePassword} logInSuccessful={this.logInSuccessful}/>;
+    return (
+      <LoginLayout
+        updateUser={this.update('user')}
+        updatePassword={this.update('password')}
+        logInSuccessful={this.logInSuccessful}
+      />
+    );
   }
 }
 
