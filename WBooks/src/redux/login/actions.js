@@ -1,5 +1,7 @@
-import loginApp from '@services/login';
+import { loginAppp } from '@services/login';
+
 import { LOGIN_TYPES } from './constants/loginTypes';
+
 export function loginHasErrored(bool) {
   return {
     type: LOGIN_TYPES.LOGIN_HAS_ERRORED,
@@ -19,18 +21,21 @@ export function loginAuthSuccess(data) {
   };
 }
 
-export const login = async (email, password) => {
-  return dispatch => {
+export const login = (email, password) => {
+  return async dispatch => {
     dispatch(loginIsLoading(true));
-    try{
-    const response = await loginApp(email, password);
-    if (!response.ok){
+    try {
+      console.log('antes de llamada a api');
+      const response = await loginAppp(email, password);
+      console.log(response);
+      if (!response.ok) {
         throw Error(response.statusText);
-    }
-    dispatch(loginIsLoading(false));
-    dispatch(loginAuthSuccess(response.data))
-    }catch{
-        dispatch(itemsHasErrored(true));
+      }
+      dispatch(loginIsLoading(false));
+      dispatch(loginAuthSuccess(response.data));
+    } catch (error) {
+      console.log(error);
+      dispatch(loginHasErrored(true));
     }
   };
-}
+};

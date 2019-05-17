@@ -2,6 +2,8 @@ import api from '@config/api';
 
 import { LOGIN_URL } from './constants/urls';
 
-export default {
-  loginApp: (email, password) => api.get(LOGIN_URL, { email, password })
+const loginCalls = {
+  loginApp: (email, password) => api.post(LOGIN_URL, { email, password })
 };
+
+export const loginAppp = (email, password) => api.post(LOGIN_URL, { email, password });

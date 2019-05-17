@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
-import { ROUTES } from '@constants/routes';
 import { login } from '@redux/login/actions';
 import { connect } from 'react-redux';
 
@@ -18,12 +17,16 @@ class Login extends Component {
 
   logInSuccessful = () => {
     const {
-      navigation: { navigate }
+      navigation: { navigate },
+      login
     } = this.props;
-    navigate(ROUTES.App);
+    const { user, password } = this.state;
+    // navigate(ROUTES.App);
+    login(user, password);
   };
 
   render() {
+    const { hasErrored, isLoading, data } = this.props;
     return (
       <LoginLayout
         updateUser={this.updateUser}

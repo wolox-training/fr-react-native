@@ -26,7 +26,7 @@ import Settings from './screens/Settings';
 import Login from './screens/Login';
 import AuthLoading from './screens/AuthLoading';
 
-const store = configureStore();
+const store = configureStore({});
 
 const LibraryNavigator = createStackNavigator(
   {
