@@ -26,6 +26,7 @@ class Login extends Component {
       login
     } = this.props;
     const { user, password } = this.state;
+
     console.log(this.validateEmail(user));
     // navigate(ROUTES.App);
     login(user, password);
@@ -33,11 +34,13 @@ class Login extends Component {
 
   render() {
     const { hasErrored, isLoading, data } = this.props;
+    const errorMessage = hasErrored ? 'Usuario y/o contrasena incorrectos' : '';
     return (
       <LoginLayout
         updateUser={this.updateUser}
         updatePassword={this.updatePassword}
         logInSuccessful={this.logInSuccessful}
+        errorMessage={errorMessage}
       />
     );
   }

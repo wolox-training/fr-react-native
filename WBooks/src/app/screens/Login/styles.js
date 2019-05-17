@@ -17,7 +17,10 @@ const styles = StyleSheet.create({
   },
   container: {
     height: 42,
-    width: 330
+    flex: 0.8
+  },
+  flexRow: {
+    flexDirection: 'row'
   },
   buttonContainer: {
     backgroundColor: veryBlue,
