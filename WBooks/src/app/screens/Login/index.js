@@ -3,10 +3,9 @@ import { withNavigation } from 'react-navigation';
 import { login } from '@redux/login/actions';
 import { connect } from 'react-redux';
 
-import { emailRegEx } from './constants/regEx';
+import { validateEmail } from './constants/validations/emailValidation';
+import { validatePassword } from './constants/validations/passwordValidation';
 import LoginLayout from './layout';
-
-import reactotron from '@app/../../ReactotronConfig';
 
 class Login extends Component {
   state = {
@@ -18,7 +17,9 @@ class Login extends Component {
 
   updatePassword = text => this.setState({ password: text });
 
-  validateEmail = email => emailRegEx.test(email);
+  validateEmail = email => validateEmail(email);
+
+  validatePassword = password => validatePassword(password);
 
   logInSuccessful = () => {
     const {
@@ -27,7 +28,7 @@ class Login extends Component {
     } = this.props;
     const { user, password } = this.state;
 
-    console.log(this.validateEmail(user));
+    console.log(this.validateEmail(user), this.validatePassword(password));
     // navigate(ROUTES.App);
     login(user, password);
   };
