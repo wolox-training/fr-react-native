@@ -11,8 +11,7 @@ import { INCORRECT_USER_AND_PASSWORD } from './constants/texts';
 class Login extends Component {
   state = {
     user: '',
-    password: '',
-    messageError: ''
+    password: ''
   };
 
   update = param => text => this.setState({ [param]: text });
@@ -32,7 +31,9 @@ class Login extends Component {
       login(user, password);
     } else {
       this.updateMessageError(
-        `${resultEmailValidation.getOrElse()} and ${resultPasswordValidation.getOrElse()}`
+        `${resultEmailValidation.getOrElse()}${
+          resultEmailValidation.isSuccess() ? resultPasswordValidation.getOrElse() : ''
+        }`
       );
     }
   };
@@ -46,6 +47,7 @@ class Login extends Component {
         updateUser={this.update('user')}
         updatePassword={this.update('password')}
         logInSuccessful={this.logInSuccessful}
+        isLoading={isLoading}
         errorMessage={message}
       />
     );

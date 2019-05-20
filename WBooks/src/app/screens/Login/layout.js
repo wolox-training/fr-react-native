@@ -4,9 +4,9 @@ import backgroundImage from '@assets/general/bc_inicio.png';
 
 import { USER_PLACE_HOLDER, PASSWORD_PLACE_HOLDER, LOG_IN } from './constants/texts';
 import styles from './styles';
-import TextInputLogin from './components/TextInputLogin';
+import ButtonOrLoading from './components/ButtonOrLoading';
 
-function LoginLayout({ updateUser, updatePassword, logInSuccessful, errorMessage }) {
+function LoginLayout({ updateUser, updatePassword, logInSuccessful, errorMessage, isLoading }) {
   return (
     <ImageBackground style={styles.loginContainer} source={backgroundImage}>
       <View style={styles.flexRow}>
@@ -28,11 +28,7 @@ function LoginLayout({ updateUser, updatePassword, logInSuccessful, errorMessage
           onChangeText={text => updatePassword(text)}
         />
       </View>
-      <View style={styles.flexRow}>
-        <TouchableOpacity style={[styles.buttonContainer, styles.container]} onPress={logInSuccessful}>
-          <Text style={styles.buttonText}>{LOG_IN}</Text>
-        </TouchableOpacity>
-      </View>
+      <ButtonOrLoading logInSuccessful={logInSuccessful} isLoading={isLoading} />
       <View>
         <Text style={styles.textError}>{errorMessage}</Text>
       </View>
