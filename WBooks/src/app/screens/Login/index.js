@@ -15,9 +15,7 @@ class Login extends Component {
     messageError: ''
   };
 
-  updateUser = text => this.setState({ user: text });
-
-  updatePassword = text => this.setState({ password: text });
+  update = param => text => this.setState({ [param]: text });
 
   updateMessageError = text => this.setState({ messageError: text });
 
@@ -45,8 +43,8 @@ class Login extends Component {
     const message = hasErrored ? INCORRECT_USER_AND_PASSWORD : messageError;
     return (
       <LoginLayout
-        updateUser={this.updateUser}
-        updatePassword={this.updatePassword}
+        updateUser={this.update('user')}
+        updatePassword={this.update('password')}
         logInSuccessful={this.logInSuccessful}
         errorMessage={message}
       />

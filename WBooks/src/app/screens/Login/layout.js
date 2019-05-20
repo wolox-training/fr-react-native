@@ -4,6 +4,7 @@ import backgroundImage from '@assets/general/bc_inicio.png';
 
 import { USER_PLACE_HOLDER, PASSWORD_PLACE_HOLDER, LOG_IN } from './constants/texts';
 import styles from './styles';
+import TextInputLogin from './components/TextInputLogin';
 
 function LoginLayout({ updateUser, updatePassword, logInSuccessful, errorMessage }) {
   return (

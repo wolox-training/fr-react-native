@@ -3,21 +3,15 @@ import { View, TouchableOpacity, Text } from 'react-native';
 import ImageBook from '@app/components/ImageBook';
 
 import styles from './styles';
-import { buttonText } from './constants/text';
+import { buttonText, availability } from './constants/text';
 import { genericBook } from './constants/genericBook';
+import { isAvailable } from './utils/isAvailable';
 
-function DetailBoxLayout({
-  image,
-  title,
-  author,
-  year,
-  availabilityStyle,
-  availabilityText,
-  rentButtonStyle,
-  disabled,
-  handleRentBook,
-  handleAddToWishlist
-}) {
+function DetailBoxLayout({ image, title, author, year, handleRentBook, handleAddToWishlist }) {
+  const availabilityStyle = isAvailable(styles.available, styles.notAvailable);
+  const availabilityText = isAvailable(availability.available, availability.notAvailable);
+  const rentButtonStyle = isAvailable(styles.rentButtonAvailable, styles.rentButtonNotAvailable);
+  const disabled = !genericBook.isAvailable;
   return (
     <View style={styles.bookContainer}>
       <View style={styles.detailContainer}>
