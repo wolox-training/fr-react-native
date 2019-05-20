@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
-import { login } from '@redux/login/actions';
+import { actionCreators } from '@redux/login/actions';
 import { connect } from 'react-redux';
 
 import { validateEmail } from './constants/validations/emailValidation';
@@ -38,9 +38,9 @@ class Login extends Component {
   };
 
   render() {
-    const { hasErrored, isLoading, data } = this.props;
-    const { user, password, messageError } = this.state;
-    const message = hasErrored ? INCORRECT_USER_AND_PASSWORD : messageError;
+    const { error } = this.props;
+    const { messageError } = this.state;
+    const message = Object.values(error).length ? INCORRECT_USER_AND_PASSWORD : messageError;
     return (
       <LoginLayout
         updateUser={this.update('user')}
@@ -54,15 +54,15 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
-    hasErrored: state.loginHasErrored,
-    isLoading: state.loginIsLoading,
-    data: state.loginAuthSuccessData
+    error: state.auth.error,
+    isLoading: state.auth.isLoading,
+    data: state.auth.data
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (user, password) => dispatch(login(user, password))
+    login: (user, password) => dispatch(actionCreators.login(user, password))
   };
 };
 

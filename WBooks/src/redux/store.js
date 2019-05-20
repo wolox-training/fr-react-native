@@ -8,6 +8,7 @@ import rootReducer from './rootReducer';
 const enhancers = [];
 enhancers.push(applyMiddleware(thunk));
 enhancers.push(reactotron.createEnhancer());
+
 export default function configureStore(initialState) {
   return createStore(rootReducer, initialState, compose(...enhancers));
 }

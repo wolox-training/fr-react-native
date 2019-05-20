@@ -1,39 +1,32 @@
 import { loginApp } from '@services/login';
 
-import { LOGIN_TYPES } from './constants/loginTypes';
+import { actionTypes } from './constants/loginTypes';
 
-export function loginHasErrored(bool) {
-  return {
-    type: LOGIN_TYPES.LOGIN_HAS_ERRORED,
-    hasErrored: bool
-  };
-}
-export function loginIsLoading(bool) {
-  return {
-    type: LOGIN_TYPES.LOGIN_IS_LOADING,
-    isLoading: bool
-  };
-}
-export function loginAuthSuccessData(data) {
-  return {
-    type: LOGIN_TYPES.LOGIN_AUTH_SUCCESS,
-    data
-  };
-}
+const privateActionsCreators = {
+  login: () => ({
+    type: actionTypes.LOGIN
+  }),
+  loginFailure: error => ({
+    type: actionTypes.LOGIN_FAILURE,
+    payload: error
+  }),
+  loginSuccess: data => ({
+    type: actionTypes.LOGIN_SUCCESS,
+    payload: data
+  })
+};
 
-export const login = (email, password) => {
-  return async dispatch => {
-    dispatch(loginIsLoading(true));
+export const actionCreators = {
+  login: (email, password) => async dispatch => {
+    dispatch(privateActionsCreators.login());
     try {
       const response = await loginApp(email, password);
       if (!response.ok) {
-        throw Error(response.statusText);
+        throw Error(response);
       }
-      dispatch(loginIsLoading(false));
-      dispatch(loginHasErrored(false));
-      dispatch(loginAuthSuccessData(response.data));
+      dispatch(privateActionsCreators.loginSuccess(response.data));
     } catch (error) {
-      dispatch(loginHasErrored(true));
+      dispatch(privateActionsCreators.loginFailure(error));
     }
-  };
+  }
 };
