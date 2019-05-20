@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { white, darkGray, veryBlue } from '@constants/colors';
+import { white, darkGray, veryBlue, red } from '@constants/colors';
 
 const styles = StyleSheet.create({
   loginContainer: {
@@ -17,7 +17,10 @@ const styles = StyleSheet.create({
   },
   container: {
     height: 42,
-    width: '90%'
+    flex: 0.8
+  },
+  flexRow: {
+    flexDirection: 'row'
   },
   buttonContainer: {
     backgroundColor: veryBlue,
@@ -30,6 +33,12 @@ const styles = StyleSheet.create({
   buttonText: {
     color: white,
     fontWeight: 'bold'
+  },
+  textError: {
+    color: red
+  },
+  marginBottom: {
+    marginBottom: 5
   }
 });
 

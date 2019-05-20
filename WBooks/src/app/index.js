@@ -6,6 +6,8 @@ import {
   createSwitchNavigator
 } from 'react-navigation';
 import { ROUTES } from '@constants/routes';
+import { Provider } from 'react-redux';
+import configureStore from '@redux/store';
 
 import {
   navigationOptionsStyle,
@@ -23,6 +25,8 @@ import Rentals from './screens/Rentals';
 import Settings from './screens/Settings';
 import Login from './screens/Login';
 import AuthLoading from './screens/AuthLoading';
+
+const store = configureStore({});
 
 const LibraryNavigator = createStackNavigator(
   {
@@ -71,7 +75,11 @@ const SwitchNavigator = createSwitchNavigator(
 const AppNavigator = createAppContainer(SwitchNavigator);
 
 function MyApp() {
-  return <AppNavigator />;
+  return (
+    <Provider store={store}>
+      <AppNavigator />
+    </Provider>
+  );
 }
 
 export default MyApp;
