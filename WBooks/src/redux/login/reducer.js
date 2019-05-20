@@ -1,32 +1,22 @@
-import { LOGIN_TYPES } from './constants/loginTypes';
+import Immutable from 'seamless-immutable';
 
-function loginHasErrored(state = false, action) {
-  switch (action.type) {
-    case LOGIN_TYPES.LOGIN_HAS_ERRORED:
-      return action.hasErrored;
-    default:
-      return state;
-  }
-}
-function loginIsLoading(state = false, action) {
-  switch (action.type) {
-    case LOGIN_TYPES.LOGIN_IS_LOADING:
-      return action.isLoading;
-    default:
-      return state;
-  }
-}
-function loginAuthSuccessData(state = {}, action) {
-  switch (action.type) {
-    case LOGIN_TYPES.LOGIN_AUTH_SUCCESS:
-      return action.data;
-    default:
-      return state;
-  }
-}
+import { actionTypes } from './constants/loginTypes';
 
-export const loginReducers = {
-  loginHasErrored,
-  loginIsLoading,
-  loginAuthSuccessData
+const initialState = {
+  isLoading: false,
+  error: {},
+  data: {}
+};
+
+export const loginReducers = (state = Immutable(initialState), action) => {
+  switch (action.type) {
+    case actionTypes.LOGIN_FAILURE:
+      return { ...state, error: action.payload, isLoading: false };
+    case actionTypes.LOGIN:
+      return { ...state, isLoading: true };
+    case actionTypes.LOGIN_SUCCESS:
+      return { isLoading: false, error: {}, data: action.payload };
+    default:
+      return state;
+  }
 };

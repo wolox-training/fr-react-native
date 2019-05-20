@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
   },
   textError: {
     color: red
+  },
+  marginBottom: {
+    marginBottom: 5
   }
 });
 
