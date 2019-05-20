@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { white, darkGray, veryBlue } from '@constants/colors';
+import { white, darkGray, veryBlue, red } from '@constants/colors';
 
 const styles = StyleSheet.create({
   loginContainer: {
@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
   buttonText: {
     color: white,
     fontWeight: 'bold'
+  },
+  textError: {
+    color: red
   }
 });
 

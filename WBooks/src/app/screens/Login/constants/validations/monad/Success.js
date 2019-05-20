@@ -3,7 +3,7 @@ class Success {
     this.value = value;
   }
 
-  map(validation) {
+  flatMap(validation) {
     return validation(this.value);
   }
 
@@ -13,6 +13,10 @@ class Success {
 
   get() {
     return this.value;
+  }
+
+  getOrElse() {
+    return '';
   }
 }
 

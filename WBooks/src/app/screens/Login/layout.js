@@ -33,7 +33,7 @@ function LoginLayout({ updateUser, updatePassword, logInSuccessful, errorMessage
         </TouchableOpacity>
       </View>
       <View>
-        <Text>{errorMessage}</Text>
+        <Text style={styles.textError}>{errorMessage}</Text>
       </View>
     </ImageBackground>
   );

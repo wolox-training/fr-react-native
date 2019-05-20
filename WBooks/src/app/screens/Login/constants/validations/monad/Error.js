@@ -3,7 +3,7 @@ class Error {
     this.messageError = messageError;
   }
 
-  map(validation) {
+  flatMap(validation) {
     return this;
   }
 
@@ -12,6 +12,10 @@ class Error {
   }
 
   get() {
+    return this.messageError;
+  }
+
+  getOrElse() {
     return this.messageError;
   }
 }

@@ -6,20 +6,20 @@ import { connect } from 'react-redux';
 import { validateEmail } from './constants/validations/emailValidation';
 import { validatePassword } from './constants/validations/passwordValidation';
 import LoginLayout from './layout';
+import { INCORRECT_USER_AND_PASSWORD } from './constants/texts';
 
 class Login extends Component {
   state = {
     user: '',
-    password: ''
+    password: '',
+    messageError: ''
   };
 
   updateUser = text => this.setState({ user: text });
 
   updatePassword = text => this.setState({ password: text });
 
-  validateEmail = email => validateEmail(email);
-
-  validatePassword = password => validatePassword(password);
+  updateMessageError = text => this.setState({ messageError: text });
 
   logInSuccessful = () => {
     const {
@@ -27,21 +27,28 @@ class Login extends Component {
       login
     } = this.props;
     const { user, password } = this.state;
-
-    console.log(this.validateEmail(user), this.validatePassword(password));
-    // navigate(ROUTES.App);
-    login(user, password);
+    const resultEmailValidation = validateEmail(user);
+    const resultPasswordValidation = validatePassword(password);
+    if (resultEmailValidation.isSuccess() && resultPasswordValidation.isSuccess()) {
+      this.updateMessageError('');
+      login(user, password);
+    } else {
+      this.updateMessageError(
+        `${resultEmailValidation.getOrElse()} and ${resultPasswordValidation.getOrElse()}`
+      );
+    }
   };
 
   render() {
     const { hasErrored, isLoading, data } = this.props;
-    const errorMessage = hasErrored ? 'Usuario y/o contrasena incorrectos' : '';
+    const { user, password, messageError } = this.state;
+    const message = hasErrored ? INCORRECT_USER_AND_PASSWORD : messageError;
     return (
       <LoginLayout
         updateUser={this.updateUser}
         updatePassword={this.updatePassword}
         logInSuccessful={this.logInSuccessful}
-        errorMessage={errorMessage}
+        errorMessage={message}
       />
     );
   }
