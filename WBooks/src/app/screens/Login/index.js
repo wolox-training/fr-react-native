@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { withNavigation , SwitchActions, NavigationActions } from 'react-navigation';
+import { withNavigation } from 'react-navigation';
 import { actionCreators } from '@redux/login/actions';
 import { connect } from 'react-redux';
-
 import { ROUTES } from '@constants/routes';
 
 import { validateEmail } from './constants/validations/emailValidation';
