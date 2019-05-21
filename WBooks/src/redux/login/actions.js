@@ -1,4 +1,4 @@
-import { loginApp } from '@services/login';
+import { login } from '@services/loginService/login';
 
 import { actionTypes } from './constants/loginTypes';
 
@@ -20,10 +20,12 @@ export const actionCreators = {
   login: (email, password) => async dispatch => {
     dispatch(privateActionsCreators.login());
     try {
-      const response = await loginApp(email, password);
+      const response = await login.loginApp(email, password);
       if (!response.ok) {
         throw Error(response);
       }
+      const { client, uid, 'access-token': accessToken } = response.headers;
+      await login.setCurrentUser(accessToken, client, uid);
       dispatch(privateActionsCreators.loginSuccess(response.data));
     } catch (error) {
       dispatch(privateActionsCreators.loginFailure(error));

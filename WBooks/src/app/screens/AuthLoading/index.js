@@ -1,8 +1,9 @@
 import React from 'react';
-import { ActivityIndicator, StatusBar, View } from 'react-native';
+import { AsyncStorage } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { ROUTES } from '@constants/routes';
 
+import { asyncStorageOperations } from './utils/asyncStorageOperations';
 import AuthLoadingLayout from './layout';
 
 class AuthLoading extends React.Component {
@@ -10,11 +11,13 @@ class AuthLoading extends React.Component {
     this.bootstrapAsync();
   }
 
-  bootstrapAsync = () => {
+  bootstrapAsync = async () => {
     const {
       navigation: { navigate }
     } = this.props;
-    navigate(ROUTES.Auth);
+
+    const userToken = await asyncStorageOperations.getAccessToken();
+    navigate(userToken ? ROUTES.App : ROUTES.Auth);
   };
 
   render() {
