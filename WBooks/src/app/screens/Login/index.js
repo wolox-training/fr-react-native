@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { withNavigation } from 'react-navigation';
+import { withNavigation , SwitchActions, NavigationActions } from 'react-navigation';
 import { actionCreators } from '@redux/login/actions';
 import { connect } from 'react-redux';
+
+import { ROUTES } from '@constants/routes';
 
 import { validateEmail } from './constants/validations/emailValidation';
 import { validatePassword } from './constants/validations/passwordValidation';
@@ -29,6 +31,7 @@ class Login extends Component {
     if (resultEmailValidation.isSuccess() && resultPasswordValidation.isSuccess()) {
       this.updateMessageError('');
       login(user, password);
+      navigate(ROUTES.App);
     } else {
       this.updateMessageError(
         `${resultEmailValidation.getOrElse()}${

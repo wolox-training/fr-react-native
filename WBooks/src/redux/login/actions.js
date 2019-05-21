@@ -1,6 +1,7 @@
 import { loginApp } from '@services/login';
 
 import { actionTypes } from './constants/loginTypes';
+import { asyncStorageOperations } from './utils/asyncStorageOperations';
 
 const privateActionsCreators = {
   login: () => ({
@@ -24,6 +25,9 @@ export const actionCreators = {
       if (!response.ok) {
         throw Error(response);
       }
+      await asyncStorageOperations.setAccessToken(response.headers['access-token']);
+      await asyncStorageOperations.setClient(response.headers.client);
+      await asyncStorageOperations.setUserId(response.headers.uid);
       dispatch(privateActionsCreators.loginSuccess(response.data));
     } catch (error) {
       dispatch(privateActionsCreators.loginFailure(error));
