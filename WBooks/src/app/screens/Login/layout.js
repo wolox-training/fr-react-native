@@ -4,6 +4,7 @@ import backgroundImage from '@assets/general/bc_inicio.png';
 
 import { USER_PLACE_HOLDER, PASSWORD_PLACE_HOLDER, LOG_IN } from './constants/texts';
 import styles from './styles';
+import ButtonOrLoading from './components/ButtonOrLoading';
 
 const COMMON_PROPS = {
   autoCapitalize: 'none',
@@ -11,7 +12,7 @@ const COMMON_PROPS = {
   style: [styles.textInput, styles.container]
 };
 
-function LoginLayout({ updateUser, updatePassword, logInSuccessful, errorMessage }) {
+function LoginLayout({ updateUser, updatePassword, logInSuccessful, errorMessage, isLoading }) {
   return (
     <ImageBackground style={styles.loginContainer} source={backgroundImage}>
       <View style={styles.flexRow}>
@@ -29,11 +30,7 @@ function LoginLayout({ updateUser, updatePassword, logInSuccessful, errorMessage
           {...COMMON_PROPS}
         />
       </View>
-      <View style={[styles.flexRow, styles.marginBottom]}>
-        <TouchableOpacity style={[styles.buttonContainer, styles.container]} onPress={logInSuccessful}>
-          <Text style={styles.buttonText}>{LOG_IN}</Text>
-        </TouchableOpacity>
-      </View>
+      <ButtonOrLoading logInSuccessful={logInSuccessful} isLoading={isLoading} />
       <Fragment>
         <Text style={styles.textError}>{errorMessage}</Text>
       </Fragment>
