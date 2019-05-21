@@ -1,9 +1,6 @@
-import { loginApp } from '@services/login';
-import api from '@config/api';
+import { login } from '@services/loginService/login';
 
 import { actionTypes } from './constants/loginTypes';
-import { asyncStorageOperations } from './utils/asyncStorageOperations';
-import { createHeaderObject } from './utils/createHeaderObject';
 
 const privateActionsCreators = {
   login: () => ({
@@ -23,15 +20,12 @@ export const actionCreators = {
   login: (email, password) => async dispatch => {
     dispatch(privateActionsCreators.login());
     try {
-      const response = await loginApp(email, password);
+      const response = await login.loginApp(email, password);
       if (!response.ok) {
         throw Error(response);
       }
       const { client, uid, 'access-token': accessToken } = response.headers;
-      await asyncStorageOperations.setAccessToken(accessToken);
-      await asyncStorageOperations.setClient(client);
-      await asyncStorageOperations.setUserId(uid);
-      api.setHeaders(createHeaderObject(accessToken, client, uid));
+      await login.setCurrentUser(accessToken, client, uid);
       dispatch(privateActionsCreators.loginSuccess(response.data));
     } catch (error) {
       dispatch(privateActionsCreators.loginFailure(error));
