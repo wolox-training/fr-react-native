@@ -1,4 +1,6 @@
 import { login } from '@services/loginService/login';
+import { NavigationActions } from 'react-navigation';
+import { ROUTES } from '@constants/routes';
 
 import { actionTypes } from './constants/loginTypes';
 import { asyncStorageOperations } from './utils/asyncStorageOperations';
@@ -29,6 +31,7 @@ export const actionCreators = {
       await login.setCurrentUser(accessToken, client, uid);
       login.setHeader(accessToken, client, uid);
       dispatch(privateActionsCreators.loginSuccess(response.data));
+      dispatch(NavigationActions.navigate({ routeName: ROUTES.App }));
     } catch (error) {
       dispatch(privateActionsCreators.loginFailure(error));
     }
