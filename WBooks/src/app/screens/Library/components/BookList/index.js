@@ -5,9 +5,8 @@ import { connect } from 'react-redux';
 
 import Book from '../Book';
 
-import { composeConditionalRenders } from './composition';
+import BookListCompose from './composition';
 import styles from './styles';
-import BookListLayout from './layout';
 
 class BookList extends Component {
   componentDidMount() {
@@ -22,14 +21,15 @@ class BookList extends Component {
   separator = () => <View style={styles.separator} />;
 
   render() {
-    const { books } = this.props;
-    console.log(books);
+    const { books, isLoading, error } = this.props;
     return (
-      <BookListLayout
+      <BookListCompose
         data={books}
         renderItem={this.renderItem}
         keyExtractor={this.keyExtractor}
         ItemSeparatorComponent={this.separator}
+        isLoading={isLoading}
+        error={error}
       />
     );
   }
@@ -49,12 +49,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-// export default composeConditionalRenders(
-//   connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-//   )(BookList)
-// );
 export default connect(
   mapStateToProps,
   mapDispatchToProps
