@@ -5,9 +5,9 @@ import { booksReducer } from './books/reducer';
 
 const rootReducer = navReducer =>
   combineReducers({
-    nav: navReducer,
     auth: loginReducers,
-    books: booksReducer
+    books: booksReducer,
+    nav: navReducer
   });
 
 export default rootReducer;
