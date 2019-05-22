@@ -1,6 +1,7 @@
 import { login } from '@services/loginService/login';
 
 import { actionTypes } from './constants/loginTypes';
+import { asyncStorageOperations } from './utils/asyncStorageOperations';
 
 const privateActionsCreators = {
   login: () => ({
@@ -26,9 +27,16 @@ export const actionCreators = {
       }
       const { client, uid, 'access-token': accessToken } = response.headers;
       await login.setCurrentUser(accessToken, client, uid);
+      login.setHeader(accessToken, client, uid);
       dispatch(privateActionsCreators.loginSuccess(response.data));
     } catch (error) {
       dispatch(privateActionsCreators.loginFailure(error));
     }
+  },
+  setHeaders: async () => {
+    const accessToken = await asyncStorageOperations.getAccessToken();
+    const client = await asyncStorageOperations.getClient();
+    const userId = await asyncStorageOperations.getUserId();
+    login.setHeader(accessToken, client, userId);
   }
 };

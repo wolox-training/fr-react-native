@@ -7,7 +7,7 @@ import { buttonText, availability } from './constants/text';
 import { genericBook } from './constants/genericBook';
 import { isAvailable } from './utils/isAvailable';
 
-function DetailBoxLayout({ image, title, author, year, handleRentBook, handleAddToWishlist }) {
+function DetailBoxLayout({ image, title, author, year, genre, handleRentBook, handleAddToWishlist }) {
   const availabilityStyle = isAvailable(styles.available, styles.notAvailable);
   const availabilityText = isAvailable(availability.available, availability.notAvailable);
   const rentButtonStyle = isAvailable(styles.rentButtonAvailable, styles.rentButtonNotAvailable);
@@ -32,7 +32,7 @@ function DetailBoxLayout({ image, title, author, year, handleRentBook, handleAdd
             <Text style={styles.textInfo}>{year}</Text>
           </View>
           <View>
-            <Text style={styles.textInfo}>{genericBook.type}</Text>
+            <Text style={styles.textInfo}>{genre}</Text>
           </View>
         </View>
       </View>

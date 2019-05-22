@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withNavigation } from 'react-navigation';
-import { actionCreators } from '@redux/login/actions';
+import { actionCreators } from '@redux/auth/actions';
 import { connect } from 'react-redux';
 import { ROUTES } from '@constants/routes';
 
@@ -19,7 +19,7 @@ class Login extends Component {
 
   updateMessageError = text => this.setState({ messageError: text });
 
-  logInSuccessful = () => {
+  logInSuccessful = async () => {
     const {
       navigation: { navigate },
       login
@@ -29,7 +29,7 @@ class Login extends Component {
     const resultPasswordValidation = validatePassword(password);
     if (resultEmailValidation.isSuccess() && resultPasswordValidation.isSuccess()) {
       this.updateMessageError('');
-      login(user, password);
+      await login(user, password);
       navigate(ROUTES.App);
     } else {
       this.updateMessageError(
