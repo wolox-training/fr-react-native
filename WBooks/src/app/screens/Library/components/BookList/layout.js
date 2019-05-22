@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 
-function BookListLayout({ data, keyExtractor, renderItem, ItemSeparatorComponent, props }) {
+function BookListLayout({ data, keyExtractor, renderItem, ItemSeparatorComponent }) {
   return (
     <FlatList
       data={data}
