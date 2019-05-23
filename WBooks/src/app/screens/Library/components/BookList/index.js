@@ -35,19 +35,15 @@ class BookList extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    error: state.books.error,
-    isLoading: state.books.isLoading,
-    books: state.books.books
-  };
-};
+const mapStateToProps = state => ({
+  error: state.books.error,
+  isLoading: state.books.isLoading,
+  books: state.books.books
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getBooks: () => dispatch(bookActions.getBooks())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  getBooks: () => dispatch(bookActions.getBooks())
+});
 
 export default connect(
   mapStateToProps,

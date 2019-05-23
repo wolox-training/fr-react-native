@@ -1,11 +1,11 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Fragment } from 'react';
+import { Text } from 'react-native';
 
 function Error() {
   return (
-    <View>
+    <Fragment>
       <Text>ERRORRRRRRR</Text>
-    </View>
+    </Fragment>
   );
 }
 
