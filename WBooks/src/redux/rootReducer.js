@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux';
 
-import { loginReducers } from './login/reducer';
+import { loginReducers } from './auth/reducer';
+import { booksReducer } from './books/reducer';
 
-const rootReducer = combineReducers({
-  auth: loginReducers
-});
+const rootReducer = navReducer =>
+  combineReducers({
+    auth: loginReducers,
+    books: booksReducer,
+    nav: navReducer
+  });
 
 export default rootReducer;

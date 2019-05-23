@@ -6,9 +6,9 @@ import reactotron from '../../ReactotronConfig';
 import rootReducer from './rootReducer';
 
 const enhancers = [];
-enhancers.push(applyMiddleware(thunk));
 enhancers.push(reactotron.createEnhancer());
 
-export default function configureStore(initialState) {
-  return createStore(rootReducer, initialState, compose(...enhancers));
+export default function configureStore(initialState, navReducer, middlewareNav) {
+  enhancers.push(applyMiddleware(thunk, middlewareNav));
+  return createStore(rootReducer(navReducer), initialState, compose(...enhancers));
 }

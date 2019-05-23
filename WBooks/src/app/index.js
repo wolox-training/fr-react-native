@@ -6,8 +6,13 @@ import {
   createSwitchNavigator
 } from 'react-navigation';
 import { ROUTES } from '@constants/routes';
-import { Provider } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import configureStore from '@redux/store';
+import {
+  createReduxContainer,
+  createReactNavigationReduxMiddleware,
+  createNavigationReducer
+} from 'react-navigation-redux-helpers';
 
 import {
   navigationOptionsStyle,
@@ -25,8 +30,6 @@ import Rentals from './screens/Rentals';
 import Settings from './screens/Settings';
 import Login from './screens/Login';
 import AuthLoading from './screens/AuthLoading';
-
-const store = configureStore({});
 
 const LibraryNavigator = createStackNavigator(
   {
@@ -74,10 +77,21 @@ const SwitchNavigator = createSwitchNavigator(
 );
 const AppNavigator = createAppContainer(SwitchNavigator);
 
+const navReducer = createNavigationReducer(AppNavigator);
+
+const middlewareNav = createReactNavigationReduxMiddleware(state => state.nav);
+
+const App = createReduxContainer(AppNavigator);
+const mapStateToProps = state => ({
+  state: state.nav
+});
+const AppWithNavigationState = connect(mapStateToProps)(App);
+
+const store = configureStore({}, navReducer, middlewareNav);
 function MyApp() {
   return (
     <Provider store={store}>
-      <AppNavigator />
+      <AppWithNavigationState />
     </Provider>
   );
 }

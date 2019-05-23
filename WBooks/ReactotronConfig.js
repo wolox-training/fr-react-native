@@ -1,4 +1,4 @@
-import Reactotron, { asyncStorage } from 'reactotron-react-native'
+import Reactotron, { asyncStorage } from 'reactotron-react-native';
 import { reactotronRedux } from 'reactotron-redux';
 import tronsauce from 'reactotron-apisauce';
 

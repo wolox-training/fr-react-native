@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { withNavigation , SwitchActions, NavigationActions } from 'react-navigation';
-import { actionCreators } from '@redux/login/actions';
+import { withNavigation } from 'react-navigation';
+import { actionCreators } from '@redux/auth/actions';
 import { connect } from 'react-redux';
-
-import { ROUTES } from '@constants/routes';
 
 import { validateEmail } from './constants/validations/emailValidation';
 import { validatePassword } from './constants/validations/passwordValidation';
@@ -20,18 +18,14 @@ class Login extends Component {
 
   updateMessageError = text => this.setState({ messageError: text });
 
-  logInSuccessful = () => {
-    const {
-      navigation: { navigate },
-      login
-    } = this.props;
+  logInSuccessful = async () => {
+    const { login } = this.props;
     const { user, password } = this.state;
     const resultEmailValidation = validateEmail(user);
     const resultPasswordValidation = validatePassword(password);
     if (resultEmailValidation.isSuccess() && resultPasswordValidation.isSuccess()) {
       this.updateMessageError('');
       login(user, password);
-      navigate(ROUTES.App);
     } else {
       this.updateMessageError(
         `${resultEmailValidation.getOrElse()}${
@@ -57,19 +51,15 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    error: state.auth.error,
-    isLoading: state.auth.isLoading,
-    data: state.auth.data
-  };
-};
+const mapStateToProps = state => ({
+  error: state.auth.error,
+  isLoading: state.auth.isLoading,
+  data: state.auth.data
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    login: (user, password) => dispatch(actionCreators.login(user, password))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  login: (user, password) => dispatch(actionCreators.login(user, password))
+});
 
 export default connect(
   mapStateToProps,

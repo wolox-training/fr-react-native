@@ -1,6 +1,6 @@
 import React from 'react';
+import Loading from '@app/components/Loading';
 
-import Loading from '../Loading';
 import LoginButton from '../LoginButton';
 
 function ButtonOrLoading({ isLoading, logInSuccessful }) {
