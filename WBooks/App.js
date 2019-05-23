@@ -1,5 +1,4 @@
 import React from 'react';
-import { AsyncStorage } from 'react-native';
 
 import MyApp from './src/app';
 
@@ -8,6 +7,5 @@ if (__DEV__) {
 }
 
 export default function index() {
-  //AsyncStorage.clear();
   return <MyApp />;
 }

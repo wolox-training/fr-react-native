@@ -28,11 +28,7 @@ class Book extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  return {
-    book: state.books.books.find(book => book.id === props.id)
-  };
-};
+const mapStateToProps = (state, props) => ({ book: state.books.books.find(book => book.id === props.id) });
 
 Book.propTypes = {
   id: PropTypes.number.isRequired,
