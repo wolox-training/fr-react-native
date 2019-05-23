@@ -1,12 +1,15 @@
-import { combineReducers } from 'redux';
+import { combineReducers as CR } from 'redux';
+import { wrapCombineReducers } from 'redux-recompose';
 
 import { loginReducers } from './auth/reducer';
-import { booksReducer } from './books/reducer';
+import reducer from './books/reducer';
+
+const combineReducers = wrapCombineReducers(CR);
 
 const rootReducer = navReducer =>
   combineReducers({
     auth: loginReducers,
-    books: booksReducer,
+    books: reducer,
     nav: navReducer
   });
 

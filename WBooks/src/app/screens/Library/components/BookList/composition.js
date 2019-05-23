@@ -11,7 +11,7 @@ const highOrderComponent = (conditionalRenderingFn, EitherComponent) => Componen
 };
 
 const isLoadingConditionFn = ({ isLoading }) => isLoading;
-const errorCondition = ({error}) => Object.values(error).length;
+const errorCondition = ({error}) => error && Object.values(error).length;
 const isEmptyConditionFn = ({data}) => !data.length || !data;
 
 const withConditionalRenderings = compose(

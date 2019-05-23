@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { bookActions } from '@redux/books/actions';
+import { actionCreators } from '@redux/books/actions';
 import { connect } from 'react-redux';
 
 import Book from '../Book';
@@ -37,15 +37,15 @@ class BookList extends Component {
 
 const mapStateToProps = state => {
   return {
-    error: state.books.error,
-    isLoading: state.books.isLoading,
+    error: state.books.booksError,
+    isLoading: state.books.booksLoading,
     books: state.books.books
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getBooks: () => dispatch(bookActions.getBooks())
+    getBooks: () => dispatch(actionCreators.getBooks())
   };
 };
 

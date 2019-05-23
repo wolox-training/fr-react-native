@@ -8,6 +8,6 @@ if (__DEV__) {
 }
 
 export default function index() {
-  AsyncStorage.clear();
+  //AsyncStorage.clear();
   return <MyApp />;
 }
