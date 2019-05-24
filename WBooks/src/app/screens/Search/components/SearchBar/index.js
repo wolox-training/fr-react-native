@@ -9,7 +9,8 @@ import styles from './styles';
 
 class SearchBar extends Component {
   goBack = () => {
-    const { navigation } = this.props;
+    const { navigation, write } = this.props;
+    write('');
     navigation.dispatch(NavigationActions.back());
   };
 

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import SearchComposed from './composition';
+import styles from './styles';
 
 class Search extends Component {
   filterBooks = (text, books) =>
@@ -10,7 +12,11 @@ class Search extends Component {
   render() {
     const { text, books } = this.props;
     const data = this.filterBooks(text, books);
-    return <SearchComposed data={data} text={text} />;
+    return (
+      <View style={styles.container}>
+        <SearchComposed data={data} text={text} />
+      </View>
+    );
   }
 }
 
