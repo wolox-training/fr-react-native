@@ -21,6 +21,7 @@ export const navigationOptionsStyle = {
   headerBackground: <Image source={headerBackground} />,
   headerBackImage: <Image style={stylesGenericOptions.imageBack} source={back} />,
   headerBackTitle: null,
+  headerLayoutPreset: 'left',
   headerTitleStyle: {
     color: white,
     fontWeight: 'bold',
