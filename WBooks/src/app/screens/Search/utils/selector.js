@@ -13,3 +13,7 @@ export const getBooksSelector = createSelector(
     ).sort(book => book.id);
   }
 );
+export const getEmptyInputSelector = createSelector(
+  getText,
+  text => !text
+);
