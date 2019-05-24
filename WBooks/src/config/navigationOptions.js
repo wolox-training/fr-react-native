@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image } from 'react-native';
+import SearchBar from '@app/screens/Search/components/SearchBar';
 
 import headerBackground from '../assets/general/bc_nav_bar.png';
 import back from '../assets/navigation_bar/ic_back.png';
@@ -13,7 +14,7 @@ import { stylesGenericOptions, stylesLibraryHeader } from './navigationOptionsSt
 export const defaultNavigationOptionsTab = ({ navigation }) => ({
   tabBarIcon: ({ focused }) => {
     const { routeName } = navigation.state;
-    return <IconTab route={routeName} focused={focused}/>;
+    return <IconTab route={routeName} focused={focused} />;
   }
 });
 
@@ -21,7 +22,6 @@ export const navigationOptionsStyle = {
   headerBackground: <Image source={headerBackground} />,
   headerBackImage: <Image style={stylesGenericOptions.imageBack} source={back} />,
   headerBackTitle: null,
-  headerLayoutPreset: 'left',
   headerTitleStyle: {
     color: white,
     fontWeight: 'bold',
@@ -33,8 +33,13 @@ export const navigationOptionsTitle = name => ({
   title: NAMES[name]
 });
 
-export const navigationOptionsLibrary = name => ({
+export const navigationOptionsLibrary = (name, searchRoute) => ({
   ...navigationOptionsTitle(name),
-  headerLeft: <IconHeader style={stylesLibraryHeader.bellIcon} icon="bell" action={() => {}} />,
-  headerRight: <IconHeader style={stylesLibraryHeader.searchIcon} icon="search" action={() => {}} />
+  headerLeft: <IconHeader style={stylesLibraryHeader.bellIcon} icon="bell" route={searchRoute} />,
+  headerRight: <IconHeader style={stylesLibraryHeader.searchIcon} icon="search" route={searchRoute} />
+});
+
+export const navigationOptionsSearch = () => ({
+  headerTitle: <SearchBar />,
+  headerLeft: null
 });
