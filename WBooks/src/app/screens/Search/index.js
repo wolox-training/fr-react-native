@@ -1,18 +1,21 @@
-import React from 'react';
-import { compose } from 'recompose';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import BookList from '../Library/components/BookList';
+import SearchComposed from './composition';
 
-import IsEmptyList from './components/IsEmptyList';
+class Search extends Component {
+  filterBooks = (text, books) => books.filter(book => book.title.toLowerCase().includes(text.toLowerCase())).sort();
 
-const highOrderComponent = (conditionalRenderingFn, EitherComponent) => Component => props =>
-  conditionalRenderingFn(props) ? <EitherComponent /> : <Component {...props} />;
+  render() {
+    const { text, books } = this.props;
+    const data = this.filterBooks(text, books);
+    return <SearchComposed data={data} text={text} />;
+  }
+}
 
-//const isEmptyConditionFn = ({ data }) => !data.length || !data;
-const isEmptyConditionFn = ({ data }) => true;
+const mapStateToProps = state => ({
+  text: state.search.text,
+  books: state.books.books
+});
 
-const withConditionalRenderings = compose(highOrderComponent(isEmptyConditionFn, IsEmptyList));
-
-const Search = withConditionalRenderings(BookList);
-
-export default Search;
+export default connect(mapStateToProps)(Search);

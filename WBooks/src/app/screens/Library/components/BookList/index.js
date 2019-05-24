@@ -12,16 +12,7 @@ class BookList extends Component {
 
   render() {
     const { books, isLoading, error } = this.props;
-    return (
-      <BookListCompose
-        data={books}
-        renderItem={this.renderItem}
-        keyExtractor={this.keyExtractor}
-        ItemSeparatorComponent={this.separator}
-        isLoading={isLoading}
-        error={error}
-      />
-    );
+    return <BookListCompose data={books} isLoading={isLoading} error={error} />;
   }
 }
 

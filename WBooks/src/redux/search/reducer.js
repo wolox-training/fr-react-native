@@ -3,7 +3,8 @@ import Immutable from 'seamless-immutable';
 import { actionTypes } from './constants/actionTypes';
 
 const initialState = {
-  text: ''
+  text: '',
+  books: []
 };
 
 export const searchReducer = (state = Immutable(initialState), action) => {
