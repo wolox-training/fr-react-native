@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import SearchComposed from './composition';
 
 class Search extends Component {
-  filterBooks = (text, books) => books.filter(book => book.title.toLowerCase().includes(text.toLowerCase())).sort();
+  filterBooks = (text, books) =>
+    books.filter(book => book.title.toLowerCase().includes(text.toLowerCase())).sort();
 
   render() {
     const { text, books } = this.props;

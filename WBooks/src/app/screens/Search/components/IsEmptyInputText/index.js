@@ -4,7 +4,7 @@ import searchIcon from '@assets/navigation_bar/search.png';
 
 import styles from './styles';
 
-function IsEmptyList() {
+function IsEmptyInputText() {
   return (
     <View style={styles.container}>
       <Image source={searchIcon} style={styles.image} />
@@ -18,4 +18,4 @@ function IsEmptyList() {
   );
 }
 
-export default IsEmptyList;
+export default IsEmptyInputText;
