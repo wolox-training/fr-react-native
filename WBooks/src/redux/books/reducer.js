@@ -14,4 +14,4 @@ const stateDescription = {
 
 const initialState = completeState(stateDescription);
 
-export default createReducer(Immutable(initialState), completeReducer(reducerDescription));
+export const booksReducer = createReducer(Immutable(initialState), completeReducer(reducerDescription));
