@@ -10,7 +10,7 @@ const highOrderComponent = (conditionalRenderingFn, EitherComponent) => Componen
   conditionalRenderingFn(props) ? <EitherComponent /> : <Component {...props} />;
 
 const isEmptyCondition = ({ data }) => !data.length || !data;
-const thereIsNoText = ({ text }) => !text;
+const thereIsNoText = ({ isEmptyInput }) => isEmptyInput;
 
 const withConditionalRenderings = compose(
   highOrderComponent(thereIsNoText, IsEmptyInputText),
