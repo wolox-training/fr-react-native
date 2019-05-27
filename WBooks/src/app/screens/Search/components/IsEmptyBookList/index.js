@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { View, Text } from 'react-native';
 
 import styles from './styles';
 
-function IsEmptyInputText() {
+function IsEmptyBookList() {
   return (
     <View style={styles.container}>
-      <View>
+      <Fragment>
         <Text style={styles.title}>There is no books with that name</Text>
-      </View>
+      </Fragment>
     </View>
   );
 }
 
-export default IsEmptyInputText;
+export default IsEmptyBookList;

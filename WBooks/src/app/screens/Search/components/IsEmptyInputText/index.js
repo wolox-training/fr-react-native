@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Image, View, Text } from 'react-native';
 import searchIcon from '@assets/navigation_bar/search.png';
 
@@ -8,12 +8,12 @@ function IsEmptyInputText() {
   return (
     <View style={styles.container}>
       <Image source={searchIcon} style={styles.image} />
-      <View>
+      <Fragment>
         <Text style={styles.title}>Search in WBooks</Text>
-      </View>
-      <View>
+      </Fragment>
+      <Fragment>
         <Text style={styles.message}>Find your favorite writer and books</Text>
-      </View>
+      </Fragment>
     </View>
   );
 }
