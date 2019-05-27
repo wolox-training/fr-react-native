@@ -1,17 +1,13 @@
+import { createReducer, completeReducer, onSetValue } from 'redux-recompose';
 import Immutable from 'seamless-immutable';
 
-import { actionTypes } from './constants/actionTypes';
+import { actions } from './actions';
 
 const initialState = {
-  text: '',
-  books: []
+  text: ''
 };
 
-export const searchReducer = (state = Immutable(initialState), action) => {
-  switch (action.type) {
-    case actionTypes.WRITE:
-      return { ...state, text: action.payload };
-    default:
-      return state;
-  }
+const reducerDescription = {
+  [actions.WRITE]: (state, action) => ({ ...state, [action.target]: action.payload })
 };
+export const searchReducer = createReducer(Immutable(initialState), reducerDescription);
