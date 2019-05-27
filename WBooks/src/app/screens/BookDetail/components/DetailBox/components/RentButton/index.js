@@ -19,28 +19,29 @@ class RentButton extends Component {
     const { handleRentBook } = this.props;
     this.setState({ onPress: true });
     this.onClickWidth();
-    this.onClickRadius();
   };
 
   onClickWidth = () => {
-    Animated.timing(this.state.width, {
-      toValue: this.state.height,
-      duration: 300,
-      useNativeDriver: false
-    }).start();
-  };
-
-  onClickRadius = () => {
-    Animated.timing(this.state.borderRadius, {
-      toValue: 50,
-      duration: 300,
-      useNativeDriver: false
-    }).start();
+    Animated.parallel([
+      Animated.timing(this.state.width, {
+        toValue: this.state.height,
+        duration: 300,
+        useNativeDriver: false
+      }),
+      Animated.timing(this.state.borderRadius, {
+        toValue: 50,
+        duration: 300,
+        useNativeDriver: false
+      })
+    ]).start();
   };
 
   setWidthAndHeight = event => {
-    const { width, height } = event.nativeEvent.layout;
-    this.setState({ width: new Animated.Value(width), height });
+    if (!this.state.onPress) {
+      const { width, height } = event.nativeEvent.layout;
+      console.log(width);
+      this.setState({ width: new Animated.Value(width), height });
+    }
   };
 
   render() {

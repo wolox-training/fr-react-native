@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
     color: white
   },
   imageTick: {
-    width: 25,
-    height: 25
+    width: 20,
+    height: 20
   }
 });
 
