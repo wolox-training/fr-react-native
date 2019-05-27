@@ -19,7 +19,6 @@ class RentButton extends Component {
     const { handleRentBook } = this.props;
     this.setState({ onPress: true });
     this.onClick();
-    // this.onClickWidth();
   };
 
   onClick = () => {
@@ -50,7 +49,7 @@ class RentButton extends Component {
     return (
       <TouchableOpacity
         onPress={this.onPress}
-        disabled={disabled}
+        disabled={disabled || this.state.onPress}
         onLayout={event => this.setWidthAndHeight(event)}
       >
         <Animated.View
