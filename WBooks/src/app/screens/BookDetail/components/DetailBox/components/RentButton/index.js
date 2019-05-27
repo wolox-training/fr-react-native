@@ -9,7 +9,7 @@ import styles from './styles';
 
 class RentButton extends Component {
   state = {
-    borderRadius: new Animated.Value(25),
+    counter: new Animated.Value(0),
     onPress: false,
     width: null,
     height: null
@@ -18,41 +18,46 @@ class RentButton extends Component {
   onPress = () => {
     const { handleRentBook } = this.props;
     this.setState({ onPress: true });
-    this.onClickWidth();
+    this.onClick();
+    // this.onClickWidth();
   };
 
-  onClickWidth = () => {
-    Animated.parallel([
-      Animated.timing(this.state.width, {
-        toValue: this.state.height,
-        duration: 300,
-        useNativeDriver: false
-      }),
-      Animated.timing(this.state.borderRadius, {
-        toValue: 50,
-        duration: 300,
-        useNativeDriver: false
-      })
-    ]).start();
+  onClick = () => {
+    Animated.timing(this.state.counter, {
+      toValue: 1,
+      duration: 300,
+      useNativeDriver: false
+    }).start();
   };
 
   setWidthAndHeight = event => {
     if (!this.state.onPress) {
       const { width, height } = event.nativeEvent.layout;
-      console.log(width);
-      this.setState({ width: new Animated.Value(width), height });
+      this.setState({ width, height });
     }
   };
 
   render() {
     const { rentButtonStyle, disabled } = this.props;
+    const width = this.state.counter.interpolate({
+      inputRange: [0, 1],
+      outputRange: [this.state.width, this.state.height]
+    });
     return (
       <TouchableOpacity
         onPress={this.onPress}
         disabled={disabled}
         onLayout={event => this.setWidthAndHeight(event)}
       >
-        <Animated.View style={[styles.genericStyleButton, rentButtonStyle, { width: this.state.width }]}>
+        <Animated.View
+          style={[
+            styles.genericStyleButton,
+            rentButtonStyle,
+            {
+              width
+            }
+          ]}
+        >
           {!this.state.onPress ? (
             <Text style={styles.textAvailable}>{buttonText.rent}</Text>
           ) : (
