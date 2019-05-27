@@ -9,7 +9,6 @@ import styles from './styles';
 class Search extends Component {
   render() {
     const { books, isEmptyInput } = this.props;
-    console.log('write');
     return (
       <View style={styles.container}>
         <SearchComposed data={books} isEmptyInput={isEmptyInput} />
