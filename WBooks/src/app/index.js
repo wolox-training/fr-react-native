@@ -18,6 +18,7 @@ import {
   navigationOptionsStyle,
   navigationOptionsLibrary,
   navigationOptionsTitle,
+  navigationOptionsSearch,
   defaultNavigationOptionsTab
 } from '../config/navigationOptions';
 
@@ -29,13 +30,18 @@ import Addnew from './screens/Addnew';
 import Rentals from './screens/Rentals';
 import Settings from './screens/Settings';
 import Login from './screens/Login';
+import Search from './screens/Search';
 import AuthLoading from './screens/AuthLoading';
 
 const LibraryNavigator = createStackNavigator(
   {
     [ROUTES.Library]: {
       screen: Library,
-      navigationOptions: navigationOptionsLibrary(ROUTES.Library)
+      navigationOptions: navigationOptionsLibrary(ROUTES.Library, ROUTES.Search)
+    },
+    [ROUTES.Search]: {
+      screen: Search,
+      navigationOptions: navigationOptionsSearch()
     },
     [ROUTES.BookDetail]: {
       screen: BookDetail,

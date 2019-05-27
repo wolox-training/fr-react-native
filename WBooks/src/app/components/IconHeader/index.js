@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { TouchableOpacity, Image } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
 import styles from './styles';
 import { icons } from './constants/iconsName';
 
-function IconHeader({ icon, action, style }) {
-  const particularIcon = icons[icon];
-  return (
-    <TouchableOpacity onPress={action}>
-      <Image style={[styles.image, style]} source={particularIcon} />
-    </TouchableOpacity>
-  );
+class IconHeader extends Component {
+  navigate = () => {
+    const {
+      navigation: { navigate },
+      route
+    } = this.props;
+    navigate(route);
+  };
+
+  render() {
+    const { icon, style } = this.props;
+    const particularIcon = icons[icon];
+    return (
+      <TouchableOpacity onPress={this.navigate}>
+        <Image style={[styles.image, style]} source={particularIcon} />
+      </TouchableOpacity>
+    );
+  }
 }
 
-export default IconHeader;
+export default withNavigation(IconHeader);

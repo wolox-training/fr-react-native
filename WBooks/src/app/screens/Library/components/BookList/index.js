@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import { actionCreators } from '@redux/books/actions';
 import { connect } from 'react-redux';
 
-import Book from '../Book';
-
 import BookListCompose from './composition';
-import styles from './styles';
 
 class BookList extends Component {
   componentDidMount() {
@@ -14,24 +10,9 @@ class BookList extends Component {
     getBooks();
   }
 
-  keyExtractor = item => `${item.id}`;
-
-  renderItem = ({ item }) => <Book id={item.id} />;
-
-  separator = () => <View style={styles.separator} />;
-
   render() {
     const { books, isLoading, error } = this.props;
-    return (
-      <BookListCompose
-        data={books}
-        renderItem={this.renderItem}
-        keyExtractor={this.keyExtractor}
-        ItemSeparatorComponent={this.separator}
-        isLoading={isLoading}
-        error={error}
-      />
-    );
+    return <BookListCompose data={books} isLoading={isLoading} error={error} />;
   }
 }
 

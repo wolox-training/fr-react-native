@@ -7,5 +7,6 @@ export const ROUTES = {
   Settings: 'Settings',
   App: 'App',
   Auth: 'Auth',
-  AuthLoading: 'AuthLoading'
+  AuthLoading: 'AuthLoading',
+  Search: 'Search'
 };
