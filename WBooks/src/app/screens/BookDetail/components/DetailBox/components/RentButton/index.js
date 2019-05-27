@@ -43,6 +43,10 @@ class RentButton extends Component {
       inputRange: [0, 1],
       outputRange: [this.state.width, this.state.height]
     });
+    const color = this.state.counter.interpolate({
+      inputRange: [0, 1],
+      outputRange: [rentButtonStyle.backgroundColor, '#99ff99']
+    });
     return (
       <TouchableOpacity
         onPress={this.onPress}
@@ -53,6 +57,7 @@ class RentButton extends Component {
           style={[
             styles.genericStyleButton,
             rentButtonStyle,
+            { backgroundColor: color },
             {
               width
             }

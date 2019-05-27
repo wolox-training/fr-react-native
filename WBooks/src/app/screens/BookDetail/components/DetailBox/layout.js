@@ -44,13 +44,6 @@ function DetailBoxLayout({ image, title, author, year, genre, handleRentBook, ha
         >
           <Text style={[styles.buttonAndAvailableDesign, styles.wishlistText]}>{buttonText.wishlist}</Text>
         </TouchableOpacity>
-        {/* <TouchableOpacity
-          onPress={handleRentBook}
-          style={[styles.genericStyleButton, rentButtonStyle]}
-          disabled={disabled}
-        >
-          <Text style={[styles.textAvailable]}>{buttonText.rent}</Text>
-        </TouchableOpacity> */}
         <RentButton handleRentBook={handleRentBook} rentButtonStyle={rentButtonStyle} disabled={disabled} />
       </View>
     </View>
