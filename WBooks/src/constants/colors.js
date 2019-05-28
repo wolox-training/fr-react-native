@@ -8,3 +8,4 @@ export const lightGray = '#dddddd';
 export const veryBlue = '#39cccd';
 export const dark = '#030303';
 export const linkBlue = '#00adee';
+export const lightGreen = '#99ff99';

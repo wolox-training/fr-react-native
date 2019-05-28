@@ -6,32 +6,33 @@ class ImageLoader extends Component {
     opacity: new Animated.Value(0)
   };
 
-  onLoad = () => {
+  onLoad = () =>
     Animated.timing(this.state.opacity, {
       toValue: 1,
       duration: 500,
       useNativeDriver: true
     }).start();
-  };
 
   render() {
+    const { opacity } = this.state;
+    const { style } = this.props;
     return (
       <Animated.Image
         onLoad={this.onLoad}
         {...this.props}
         style={[
           {
-            opacity: this.state.opacity,
+            opacity,
             transform: [
               {
-                scale: this.state.opacity.interpolate({
+                scale: opacity.interpolate({
                   inputRange: [0, 1],
                   outputRange: [0.2, 1]
                 })
               }
             ]
           },
-          this.props.style
+          style
         ]}
       />
     );

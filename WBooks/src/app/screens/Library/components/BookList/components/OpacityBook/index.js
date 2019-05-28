@@ -7,15 +7,18 @@ class OpacityBook extends Component {
   };
 
   componentDidMount() {
+    const { index } = this.props;
     Animated.timing(this.state.scaleValue, {
       toValue: 1,
       duration: 600,
-      delay: this.props.index * 350
+      delay: index * 350
     }).start();
   }
 
   render() {
-    return <Animated.View style={{ opacity: this.state.scaleValue }}>{this.props.children}</Animated.View>;
+    const { scaleValue } = this.state;
+    const { children } = this.props;
+    return <Animated.View style={{ opacity: scaleValue }}>{children}</Animated.View>;
   }
 }
 

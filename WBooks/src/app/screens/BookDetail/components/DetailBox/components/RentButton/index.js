@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Text, Animated } from 'react-native';
 import greenTick from '@assets/general/greenTick.png';
 import ImageLoader from '@app/components/ImageLoader';
+import { lightGreen } from '@constants/colors';
 
 import { buttonText } from '../../constants/text';
 
@@ -22,7 +23,8 @@ class RentButton extends Component {
   };
 
   onClick = () => {
-    Animated.timing(this.state.counter, {
+    const { counter } = this.state;
+    Animated.timing(counter, {
       toValue: 1,
       duration: 300,
       useNativeDriver: false
@@ -30,26 +32,28 @@ class RentButton extends Component {
   };
 
   setWidthAndHeight = event => {
-    if (!this.state.onPress) {
+    const { onPress } = this.state;
+    if (!onPress) {
       const { width, height } = event.nativeEvent.layout;
       this.setState({ width, height });
     }
   };
 
   render() {
+    const { counter, onPress, width, height } = this.state;
     const { rentButtonStyle, disabled } = this.props;
-    const width = this.state.counter.interpolate({
+    const animateWidth = counter.interpolate({
       inputRange: [0, 1],
-      outputRange: [this.state.width, this.state.height]
+      outputRange: [width, height]
     });
-    const color = this.state.counter.interpolate({
+    const color = counter.interpolate({
       inputRange: [0, 1],
-      outputRange: [rentButtonStyle.backgroundColor, '#99ff99']
+      outputRange: [rentButtonStyle.backgroundColor, lightGreen]
     });
     return (
       <TouchableOpacity
         onPress={this.onPress}
-        disabled={disabled || this.state.onPress}
+        disabled={disabled || onPress}
         onLayout={event => this.setWidthAndHeight(event)}
       >
         <Animated.View
@@ -58,11 +62,11 @@ class RentButton extends Component {
             rentButtonStyle,
             { backgroundColor: color },
             {
-              width
+              width: animateWidth
             }
           ]}
         >
-          {!this.state.onPress ? (
+          {!onPress ? (
             <Text style={styles.textAvailable}>{buttonText.rent}</Text>
           ) : (
             <ImageLoader source={greenTick} style={styles.imageTick} />
