@@ -1,4 +1,4 @@
-import { createReducer, completeReducer, onSetValue } from 'redux-recompose';
+import { createReducer, onReadValue } from 'redux-recompose';
 import Immutable from 'seamless-immutable';
 
 import { actions } from './actions';
@@ -8,6 +8,6 @@ const initialState = {
 };
 
 const reducerDescription = {
-  [actions.WRITE]: (state, action) => ({ ...state, [action.target]: action.payload })
+  [actions.WRITE]: onReadValue()
 };
 export const searchReducer = createReducer(Immutable(initialState), reducerDescription);

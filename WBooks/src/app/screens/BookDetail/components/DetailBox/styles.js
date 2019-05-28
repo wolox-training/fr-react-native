@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { white, darkGray, red, green, blue, lightGray, veryBlue } from '../../../../../constants/colors';
-import { COMMON_TEXT } from '../../../../../constants/sizes';
+import { COMMON_TEXT } from '@constants/sizes';
 
 const styles = StyleSheet.create({
   bookContainer: {
