@@ -11,7 +11,6 @@
     "apisauce": "^1.0.2",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-runtime": "^6.26.0",
-    "chroma-js": "^2.0.3",
     "eslint-config-prettier": "^4.2.0",
     "import-glob": "^1.5.0",
     "prettier": "^1.17.0",
@@ -29,8 +28,6 @@
     "redux-recompose": "^2.1.5",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "rgb-hex": "^3.0.0",
-    "rgba-to-rgb": "^1.0.2",
     "seamless-immutable": "^7.1.4"
   },
   "devDependencies": {
