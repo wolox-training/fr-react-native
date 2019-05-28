@@ -6,6 +6,7 @@ export const green = '#00b32c';
 export const blue = '#00adee';
 export const lightGray = '#dddddd';
 export const veryBlue = '#39cccd';
+export const normalBlue = '#00adec';
 export const dark = '#030303';
 export const linkBlue = '#00adee';
 export const lightGreen = '#99ff99';

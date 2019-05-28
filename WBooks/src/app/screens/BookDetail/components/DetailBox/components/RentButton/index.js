@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Text, Animated } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import greenTick from '@assets/general/greenTick.png';
 import ImageLoader from '@app/components/ImageLoader';
-import { lightGreen } from '@constants/colors';
+import { lightGreen, normalBlue } from '@constants/colors';
 
 import { buttonText } from '../../constants/text';
 
@@ -50,28 +51,37 @@ class RentButton extends Component {
       inputRange: [0, 1],
       outputRange: [rentButtonStyle.backgroundColor, lightGreen]
     });
+    const children = !onPress ? (
+      <Text style={styles.textAvailable}>{buttonText.rent}</Text>
+    ) : (
+      <ImageLoader source={greenTick} style={styles.imageTick} />
+    );
     return (
       <TouchableOpacity
         onPress={this.onPress}
         disabled={disabled || onPress}
         onLayout={event => this.setWidthAndHeight(event)}
       >
-        <Animated.View
-          style={[
-            styles.genericStyleButton,
-            rentButtonStyle,
-            { backgroundColor: color },
-            {
-              width: animateWidth
-            }
-          ]}
-        >
-          {!onPress ? (
-            <Text style={styles.textAvailable}>{buttonText.rent}</Text>
-          ) : (
-            <ImageLoader source={greenTick} style={styles.imageTick} />
-          )}
-        </Animated.View>
+        {onPress ? (
+          <Animated.View
+            style={[
+              styles.genericStyleButton,
+              {
+                backgroundColor: color,
+                width: animateWidth
+              }
+            ]}
+          >
+            {children}
+          </Animated.View>
+        ) : (
+          <LinearGradient
+            colors={[rentButtonStyle.backgroundColor, normalBlue]}
+            style={[styles.genericStyleButton, { flex: 1, width }]}
+          >
+            {children}
+          </LinearGradient>
+        )}
       </TouchableOpacity>
     );
   }
