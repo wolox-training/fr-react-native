@@ -37,12 +37,8 @@ const styles = StyleSheet.create({
   },
   removeContainer: {
     padding: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: red,
     flex: 1,
-    marginRight: 10,
-    borderRadius: 15
+    marginRight: 10
   },
   removeText: {
     color: lightGray,

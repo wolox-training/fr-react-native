@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import ImageBook from '@app/components/ImageBook';
 import RentButton from '@app/components/RentButton';
+import AddDeleteButton from '@app/components/AddDeleteButton';
 
 import { isAvailable } from './utils/isAvailable';
 import { genericBook } from './constants/genericBook';
@@ -19,9 +20,14 @@ function BookLayout({ image, title, handleRemoveBook }) {
         <Text style={styles.title}>{title}</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={[styles.removeContainer, styles.heightButtons]} onPress={handleRemoveBook}>
+        {/* <TouchableOpacity style={[styles.removeContainer, styles.heightButtons]} onPress={handleRemoveBook}>
           <Text style={styles.removeText}>REMOVE</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <AddDeleteButton
+          handleRemoveBook={handleRemoveBook}
+          timeToAdd={false}
+          styleContainer={styles.removeContainer}
+        />
         <RentButton
           rentButtonStyle={rentButtonStyle}
           disabled={disabled}

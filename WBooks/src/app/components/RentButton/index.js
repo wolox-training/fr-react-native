@@ -5,8 +5,7 @@ import greenTick from '@assets/general/greenTick.png';
 import ImageLoader from '@app/components/ImageLoader';
 import { lightGreen, normalBlue } from '@constants/colors';
 
-import { buttonText } from '../../screens/BookDetail/components/DetailBox/constants/text';
-
+import { RENT } from './constants/texts';
 import styles from './styles';
 
 class RentButton extends Component {
@@ -52,7 +51,7 @@ class RentButton extends Component {
       outputRange: [rentButtonStyle.backgroundColor, lightGreen]
     });
     const children = !onPress ? (
-      <Text style={styles.textAvailable}>{buttonText.rent}</Text>
+      <Text style={styles.textAvailable}>{RENT}</Text>
     ) : (
       <ImageLoader source={greenTick} style={styles.imageTick} />
     );
