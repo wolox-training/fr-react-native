@@ -10,7 +10,11 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: 'column',
-    padding: 10
+    padding: 10,
+    margin: 10,
+    backgroundColor: lightGray,
+    borderRadius: 10,
+    marginTop: 40
   },
   imageContainer: {
     marginBottom: 10,

@@ -8,7 +8,7 @@ import { buttonText, availability } from './constants/text';
 import { genericBook } from './constants/genericBook';
 import { isAvailable } from './utils/isAvailable';
 
-function DetailBoxLayout({ image, title, author, year, genre, handleRentBook, handleAddToWishlist }) {
+function DetailBoxLayout({ image, title, author, year, genre, handleRentBook, handleAddToWishlist, addWishlist }) {
   const availabilityStyle = isAvailable(styles.available, styles.notAvailable);
   const availabilityText = isAvailable(availability.available, availability.notAvailable);
   const rentButtonStyle = isAvailable(styles.rentButtonAvailable, styles.rentButtonNotAvailable);
@@ -41,6 +41,7 @@ function DetailBoxLayout({ image, title, author, year, genre, handleRentBook, ha
         <TouchableOpacity
           onPress={handleAddToWishlist}
           style={[styles.genericStyleButton, styles.wishlistButton]}
+          disabled={addWishlist}
         >
           <Text style={[styles.buttonAndAvailableDesign, styles.wishlistText]}>{buttonText.wishlist}</Text>
         </TouchableOpacity>

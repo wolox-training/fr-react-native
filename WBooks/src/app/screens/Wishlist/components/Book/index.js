@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { actionCreators } from '@redux/wishlist/actions';
 
 import BookLayout from './layout';
 
 class Book extends Component {
-  handleRemoveBook = () => {};
+  handleRemoveBook = () => {
+    const { removeFromWishlist, id } = this.props;
+    removeFromWishlist(id);
+  };
 
   render() {
     const {
@@ -19,4 +23,11 @@ class Book extends Component {
 
 const mapStateToProps = (state, props) => ({ book: state.books.books.find(book => book.id === props.id) });
 
-export default connect(mapStateToProps)(Book);
+const mapDispatchToProps = dispatch => ({
+  removeFromWishlist: id => dispatch(actionCreators.delete(id))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Book);

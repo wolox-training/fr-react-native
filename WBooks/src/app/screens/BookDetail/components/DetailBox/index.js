@@ -17,15 +17,17 @@ class DetailBox extends Component {
   handleRentBook = () => {};
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, wishlistBooks } = this.props;
     this.book = navigation.getParam('book', {});
     const {
       image: { url: image },
       title,
       author,
       year,
-      genre
+      genre,
+      id
     } = this.book;
+    const isOnWishlist = wishlistBooks.map(Id => Id.id).includes(id);
     return (
       <DetailBoxLayout
         image={image}
@@ -35,16 +37,21 @@ class DetailBox extends Component {
         genre={genre}
         handleRentBook={this.handleRentBook}
         handleAddToWishlist={this.handleAddToWishlist}
+        addWishlist={isOnWishlist}
       />
     );
   }
 }
+
+const mapStateToProps = state => ({
+  wishlistBooks: state.wishlist.books
+});
 
 const mapDispatchToProps = dispatch => ({
   addToWishlist: id => dispatch(actionCreators.add(id))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(withNavigation(DetailBox));

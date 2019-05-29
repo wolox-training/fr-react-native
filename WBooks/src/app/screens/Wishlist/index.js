@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { connect } from 'react-redux';
-import { actionCreators } from '@redux/wishlist/actions';
 
 import styles from './styles';
 import Book from './components/Book';
@@ -30,11 +29,4 @@ const mapStateToProps = state => ({
   books: state.wishlist.books
 });
 
-const mapDispatchToProps = dispatch => ({
-  removeFromWishlist: id => dispatch(actionCreators.delete(id))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Wishlist);
+export default connect(mapStateToProps)(Wishlist);
