@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     borderRadius: 25,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    alignItems: 'center'
   },
   animateView: {
     flexDirection: 'row',

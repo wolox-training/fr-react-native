@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import ImageBook from '@app/components/ImageBook';
+import RentButton from '@app/components/RentButton';
 
 import styles from './styles';
 import { buttonText, availability } from './constants/text';
 import { genericBook } from './constants/genericBook';
 import { isAvailable } from './utils/isAvailable';
-import RentButton from './components/RentButton';
 
 function DetailBoxLayout({ image, title, author, year, genre, handleRentBook, handleAddToWishlist }) {
   const availabilityStyle = isAvailable(styles.available, styles.notAvailable);

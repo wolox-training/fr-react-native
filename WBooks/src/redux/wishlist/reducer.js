@@ -11,4 +11,4 @@ const reducerDescription = {
   [actions.ADD]: onAppend(),
   [actions.DELETE]: onDelete()
 };
-export const searchReducer = createReducer(Immutable(initialState), reducerDescription);
+export const wishlistReducer = createReducer(Immutable(initialState), reducerDescription);
