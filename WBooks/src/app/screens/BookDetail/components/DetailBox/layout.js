@@ -17,7 +17,8 @@ function DetailBoxLayout({
   genre,
   handleRentBook,
   handleAddToWishlist,
-  addWishlist
+  addWishlist,
+  handleRemoveBook
 }) {
   const availabilityStyle = isAvailable(styles.available, styles.notAvailable);
   const availabilityText = isAvailable(availability.available, availability.notAvailable);
@@ -48,13 +49,11 @@ function DetailBoxLayout({
         </View>
       </View>
       <View style={styles.buttonsContainer}>
-        {/* <TouchableOpacity
-          onPress={handleAddToWishlist}
-          style={[styles.genericStyleButton, styles.wishlistButton]}
-        >
-          <Text style={[styles.buttonAndAvailableDesign, styles.wishlistText]}>{buttonText.wishlist}</Text>
-        </TouchableOpacity> */}
-        <AddDeleteButton handleAddBook={handleAddToWishlist} timeToAdd={!addWishlist} />
+        <AddDeleteButton
+          handleAddBook={handleAddToWishlist}
+          handleRemoveBook={handleRemoveBook}
+          timeToAdd={!addWishlist}
+        />
         <RentButton handleRentBook={handleRentBook} rentButtonStyle={rentButtonStyle} disabled={disabled} />
       </View>
     </View>

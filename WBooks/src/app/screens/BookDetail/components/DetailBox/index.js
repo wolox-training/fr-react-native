@@ -14,6 +14,12 @@ class DetailBox extends Component {
     addToWishlist(id);
   };
 
+  handleRemoveBook = () => {
+    const { id } = this.book;
+    const { deleteFromWishlist } = this.props;
+    deleteFromWishlist(id);
+  };
+
   handleRentBook = () => {};
 
   render() {
@@ -37,6 +43,7 @@ class DetailBox extends Component {
         genre={genre}
         handleRentBook={this.handleRentBook}
         handleAddToWishlist={this.handleAddToWishlist}
+        handleRemoveBook={this.handleRemoveBook}
         addWishlist={isOnWishlist}
       />
     );
@@ -48,7 +55,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addToWishlist: id => dispatch(actionCreators.add(id))
+  addToWishlist: id => dispatch(actionCreators.add(id)),
+  deleteFromWishlist: id => dispatch(actionCreators.delete(id))
 });
 
 export default connect(
