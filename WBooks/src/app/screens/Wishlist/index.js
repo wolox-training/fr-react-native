@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions } from 'react-native';
-import Carousel from 'react-native-snap-carousel';
+import { View, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 
+import WishlistComposed from './composition';
 import styles from './styles';
 import Book from './components/Book';
 
@@ -14,7 +14,7 @@ export class Wishlist extends Component {
     const { books } = this.props;
     return (
       <View style={styles.container}>
-        <Carousel
+        <WishlistComposed
           data={books}
           renderItem={this.renderItem}
           sliderWidth={viewportWidth}
