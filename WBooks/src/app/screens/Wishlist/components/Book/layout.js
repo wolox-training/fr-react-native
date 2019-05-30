@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 import ImageBook from '@app/components/ImageBook';
 import RentButton from '@app/components/RentButton';
 import AddDeleteButton from '@app/components/AddDeleteButton';
 
 import { isAvailable } from './utils/isAvailable';
-import { genericBook } from './constants/genericBook';
+import { genericBook } from '@constants/mocks';
 import styles from './styles';
 
 function BookLayout({ image, title, handleRemoveBook }) {

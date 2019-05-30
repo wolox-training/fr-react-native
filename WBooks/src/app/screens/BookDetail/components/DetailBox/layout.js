@@ -6,7 +6,7 @@ import AddDeleteButton from '@app/components/AddDeleteButton';
 
 import styles from './styles';
 import { buttonText, availability } from './constants/text';
-import { genericBook } from './constants/genericBook';
+import { genericBook } from '@constants/mocks';
 import { isAvailable } from './utils/isAvailable';
 
 function DetailBoxLayout({
