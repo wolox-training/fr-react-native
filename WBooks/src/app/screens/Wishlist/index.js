@@ -16,6 +16,7 @@ export class Wishlist extends Component {
       <View style={styles.container}>
         <WishlistComposed
           data={books}
+          keyExtractor={item => `${item.id}`}
           renderItem={this.renderItem}
           sliderWidth={viewportWidth}
           itemWidth={viewportWidth}
