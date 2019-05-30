@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     alignSelf: 'center'
   },
+  animateView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignSelf: 'center'
+  },
   textAvailable: {
     color: white
   },
