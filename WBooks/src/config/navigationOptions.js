@@ -29,6 +29,11 @@ export const navigationOptionsStyle = {
   }
 };
 
+export const defaultNavigationOptions = {
+  defaultNavigationOptions: navigationOptionsStyle,
+  headerLayoutPreset: 'center'
+};
+
 export const navigationOptionsTitle = name => ({
   title: NAMES[name]
 });

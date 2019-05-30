@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
   },
   inputSearch: {
     flex: 1,
-    marginHorizontal: 5
+    marginHorizontal: 5,
+    paddingVertical: 0
   },
   searchIcon: {
     marginLeft: 15

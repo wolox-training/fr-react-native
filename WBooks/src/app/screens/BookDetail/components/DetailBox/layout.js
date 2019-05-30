@@ -1,14 +1,25 @@
 import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import ImageBook from '@app/components/ImageBook';
+import RentButton from '@app/components/RentButton';
+import AddDeleteButton from '@app/components/AddDeleteButton';
 
 import styles from './styles';
 import { buttonText, availability } from './constants/text';
-import { genericBook } from './constants/genericBook';
+import { genericBook } from '@constants/mocks';
 import { isAvailable } from './utils/isAvailable';
-import RentButton from './components/RentButton';
 
-function DetailBoxLayout({ image, title, author, year, genre, handleRentBook, handleAddToWishlist }) {
+function DetailBoxLayout({
+  image,
+  title,
+  author,
+  year,
+  genre,
+  handleRentBook,
+  handleAddToWishlist,
+  addWishlist,
+  handleRemoveBook
+}) {
   const availabilityStyle = isAvailable(styles.available, styles.notAvailable);
   const availabilityText = isAvailable(availability.available, availability.notAvailable);
   const rentButtonStyle = isAvailable(styles.rentButtonAvailable, styles.rentButtonNotAvailable);
@@ -38,12 +49,11 @@ function DetailBoxLayout({ image, title, author, year, genre, handleRentBook, ha
         </View>
       </View>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity
-          onPress={handleAddToWishlist}
-          style={[styles.genericStyleButton, styles.wishlistButton]}
-        >
-          <Text style={[styles.buttonAndAvailableDesign, styles.wishlistText]}>{buttonText.wishlist}</Text>
-        </TouchableOpacity>
+        <AddDeleteButton
+          handleAddBook={handleAddToWishlist}
+          handleRemoveBook={handleRemoveBook}
+          timeToAdd={!addWishlist}
+        />
         <RentButton handleRentBook={handleRentBook} rentButtonStyle={rentButtonStyle} disabled={disabled} />
       </View>
     </View>

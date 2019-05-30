@@ -5,8 +5,7 @@ import greenTick from '@assets/general/greenTick.png';
 import ImageLoader from '@app/components/ImageLoader';
 import { lightGreen, normalBlue } from '@constants/colors';
 
-import { buttonText } from '../../constants/text';
-
+import { RENT } from './constants/texts';
 import styles from './styles';
 
 class RentButton extends Component {
@@ -42,7 +41,7 @@ class RentButton extends Component {
 
   render() {
     const { counter, onPress, width, height } = this.state;
-    const { rentButtonStyle, disabled } = this.props;
+    const { rentButtonStyle, disabled, style } = this.props;
     const animateWidth = counter.interpolate({
       inputRange: [0, 1],
       outputRange: [width, height]
@@ -52,15 +51,17 @@ class RentButton extends Component {
       outputRange: [rentButtonStyle.backgroundColor, lightGreen]
     });
     const children = !onPress ? (
-      <Text style={styles.textAvailable}>{buttonText.rent}</Text>
+      <Text style={styles.textAvailable}>{RENT}</Text>
     ) : (
       <ImageLoader source={greenTick} style={styles.imageTick} />
     );
+    const colorDisabled = disabled ? rentButtonStyle.backgroundColor : normalBlue;
     return (
       <TouchableOpacity
         onPress={this.onPress}
         disabled={disabled || onPress}
         onLayout={event => this.setWidthAndHeight(event)}
+        style={style}
       >
         {onPress ? (
           <Animated.View
@@ -76,7 +77,7 @@ class RentButton extends Component {
           </Animated.View>
         ) : (
           <LinearGradient
-            colors={[rentButtonStyle.backgroundColor, normalBlue]}
+            colors={[rentButtonStyle.backgroundColor, colorDisabled]}
             style={[styles.genericStyleButton, { flex: 1, width }]}
           >
             {children}

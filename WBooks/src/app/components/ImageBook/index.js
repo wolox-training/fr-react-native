@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 import imageNoExists from '@assets/general/no_book_question.jpg';
 
-function ImageBook({ style, source }) {
+function ImageBook({ style, source, resizeMode }) {
   const imageSource = source ? { uri: source } : imageNoExists;
-  return <Image style={style} source={imageSource} />;
+  return <Image style={style} source={imageSource} resizeMode={resizeMode} />;
 }
 
 ImageBook.propTypes = {

@@ -4,6 +4,7 @@ import { wrapCombineReducers } from 'redux-recompose';
 import { loginReducers } from './auth/reducer';
 import { searchReducer } from './search/reducer';
 import { booksReducer } from './books/reducer';
+import { wishlistReducer } from './wishlist/reducer';
 
 const combineReducers = wrapCombineReducers(CR);
 
@@ -12,7 +13,8 @@ const rootReducer = navReducer =>
     auth: loginReducers,
     books: booksReducer,
     nav: navReducer,
-    search: searchReducer
+    search: searchReducer,
+    wishlist: wishlistReducer
   });
 
 export default rootReducer;
