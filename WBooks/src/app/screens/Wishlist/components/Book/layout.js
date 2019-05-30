@@ -23,7 +23,7 @@ function BookLayout({ image, title, handleRemoveBook }) {
         <AddDeleteButton
           handleRemoveBook={handleRemoveBook}
           timeToAdd={false}
-          styleContainer={styles.removeContainer}
+          styleContainer={[styles.removeContainer, styles.heightButtons]}
         />
         <RentButton
           rentButtonStyle={rentButtonStyle}

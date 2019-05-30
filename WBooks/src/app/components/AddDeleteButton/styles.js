@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     flexDirection: 'row',
     justifyContent: 'center',
-    borderRadius: 25
+    borderRadius: 25,
+    alignItems: 'center'
   },
   wishlistButton: {
     borderWidth: 1,
