@@ -10,13 +10,15 @@ const { width: viewportWidth } = Dimensions.get('window');
 export class Wishlist extends Component {
   renderItem = ({ item, index }) => <Book id={item.id} />;
 
+  keyExtractor = item => `${item.id}`;
+
   render() {
     const { books } = this.props;
     return (
       <View style={styles.container}>
         <WishlistComposed
           data={books}
-          keyExtractor={item => `${item.id}`}
+          keyExtractor={this.keyExtractor}
           renderItem={this.renderItem}
           sliderWidth={viewportWidth}
           itemWidth={viewportWidth}

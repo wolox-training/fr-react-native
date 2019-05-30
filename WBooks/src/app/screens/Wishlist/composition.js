@@ -1,15 +1,10 @@
-import React from 'react';
 import { compose } from 'recompose';
 import Carousel from 'react-native-snap-carousel';
+import { highOrderComponent, isEmptyConditionFn } from '@app/utils/composeComponent';
 
 import IsEmptyWishlist from './components/IsEmptyWishlist';
 
-const highOrderComponent = (conditionalRenderingFn, EitherComponent) => Component => props =>
-  conditionalRenderingFn(props) ? <EitherComponent /> : <Component {...props} />;
-
-const isEmptyCondition = ({ data }) => !data.length || !data;
-
-const withConditionalRenderings = compose(highOrderComponent(isEmptyCondition, IsEmptyWishlist));
+const withConditionalRenderings = compose(highOrderComponent(isEmptyConditionFn, IsEmptyWishlist));
 
 const WishlistComposed = withConditionalRenderings(Carousel);
 

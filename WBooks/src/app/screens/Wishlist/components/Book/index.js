@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from '@redux/wishlist/actions';
+import { getBookSelector } from '@app/utils/selector';
 
 import BookLayout from './layout';
 
@@ -21,7 +22,7 @@ class Book extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({ book: state.books.books.find(book => book.id === props.id) });
+const mapStateToProps = (state, props) => ({ book: getBookSelector(state, props) });
 
 const mapDispatchToProps = dispatch => ({
   removeFromWishlist: id => dispatch(actionCreators.delete(id))

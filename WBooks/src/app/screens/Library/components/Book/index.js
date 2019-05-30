@@ -4,6 +4,7 @@ import { withNavigation } from 'react-navigation';
 import { ROUTES } from '@constants/routes';
 import { navigationProptype } from '@propTypes/navigation';
 import { connect } from 'react-redux';
+import { getBookSelector } from '@app/utils/selector';
 
 import BookLayout from './layout';
 
@@ -28,7 +29,7 @@ class Book extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({ book: state.books.books.find(book => book.id === props.id) });
+const mapStateToProps = (state, props) => ({ book: getBookSelector(state, props) });
 
 Book.propTypes = {
   id: PropTypes.number.isRequired,
