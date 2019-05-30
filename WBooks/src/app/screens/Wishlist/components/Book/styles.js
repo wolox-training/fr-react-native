@@ -1,6 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { veryBlue, lightGray, red } from '@constants/colors';
 
+const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   rentButtonAvailable: {
     backgroundColor: veryBlue
@@ -13,15 +14,14 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     backgroundColor: lightGray,
-    borderRadius: 10,
-    marginTop: 40
+    borderRadius: 10
   },
   imageContainer: {
     marginBottom: 10,
     flexDirection: 'row'
   },
   image: {
-    height: 400,
+    height: height - 300,
     flex: 1
   },
   textContainer: {

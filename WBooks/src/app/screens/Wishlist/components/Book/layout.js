@@ -20,9 +20,6 @@ function BookLayout({ image, title, handleRemoveBook }) {
         <Text style={styles.title}>{title}</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        {/* <TouchableOpacity style={[styles.removeContainer, styles.heightButtons]} onPress={handleRemoveBook}>
-          <Text style={styles.removeText}>REMOVE</Text>
-        </TouchableOpacity> */}
         <AddDeleteButton
           handleRemoveBook={handleRemoveBook}
           timeToAdd={false}

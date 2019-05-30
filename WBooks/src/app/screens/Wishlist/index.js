@@ -19,6 +19,7 @@ export class Wishlist extends Component {
           renderItem={this.renderItem}
           sliderWidth={viewportWidth}
           itemWidth={viewportWidth}
+          removeClippedSubviews={false}
         />
       </View>
     );
