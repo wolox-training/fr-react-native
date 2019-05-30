@@ -33,7 +33,7 @@ class DetailBox extends Component {
       genre,
       id
     } = this.book;
-    const isOnWishlist = wishlistBooks.map(Id => Id.id).includes(id);
+    const isOnWishlist = !!wishlistBooks.find(book => book.id === id);
     return (
       <DetailBoxLayout
         image={image}

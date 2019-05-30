@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import MyStatusBar from '@app/components/MyStatusBar';
 
 import MyApp from './src/app';
 
@@ -7,5 +8,10 @@ if (__DEV__) {
 }
 
 export default function index() {
-  return <MyApp />;
+  return (
+    <Fragment>
+      <MyStatusBar />
+      <MyApp />
+    </Fragment>
+  );
 }
