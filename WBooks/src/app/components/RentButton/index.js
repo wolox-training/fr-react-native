@@ -55,6 +55,7 @@ class RentButton extends Component {
     ) : (
       <ImageLoader source={greenTick} style={styles.imageTick} />
     );
+    const colorDisabled = disabled ? rentButtonStyle.backgroundColor : normalBlue;
     return (
       <TouchableOpacity
         onPress={this.onPress}
@@ -76,7 +77,7 @@ class RentButton extends Component {
           </Animated.View>
         ) : (
           <LinearGradient
-            colors={[rentButtonStyle.backgroundColor, normalBlue]}
+            colors={[rentButtonStyle.backgroundColor, colorDisabled]}
             style={[styles.genericStyleButton, { flex: 1, width }]}
           >
             {children}
