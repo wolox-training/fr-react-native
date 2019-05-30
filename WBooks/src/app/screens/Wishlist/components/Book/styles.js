@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { veryBlue, lightGray, red } from '@constants/colors';
+import { veryBlue, lightGray } from '@constants/colors';
 
 const styles = StyleSheet.create({
   rentButtonAvailable: {

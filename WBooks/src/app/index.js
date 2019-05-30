@@ -15,11 +15,11 @@ import {
 } from 'react-navigation-redux-helpers';
 
 import {
-  navigationOptionsStyle,
   navigationOptionsLibrary,
   navigationOptionsTitle,
   navigationOptionsSearch,
-  defaultNavigationOptionsTab
+  defaultNavigationOptionsTab,
+  defaultNavigationOptions
 } from '../config/navigationOptions';
 
 import { createEmptyStack } from './utils/emptyStack';
@@ -48,9 +48,7 @@ const LibraryNavigator = createStackNavigator(
       navigationOptions: navigationOptionsTitle(ROUTES.BookDetail)
     }
   },
-  {
-    defaultNavigationOptions: navigationOptionsStyle
-  }
+  defaultNavigationOptions
 );
 
 const WishlistNavigator = createEmptyStack(Wishlist, ROUTES.Wishlist);
