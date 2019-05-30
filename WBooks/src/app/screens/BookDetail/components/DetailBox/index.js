@@ -6,7 +6,11 @@ import { actionCreators } from '@redux/wishlist/actions';
 import DetailBoxLayout from './layout';
 
 class DetailBox extends Component {
-  book = null;
+  constructor(props) {
+    super(props);
+    const { navigation } = props;
+    this.book = navigation.getParam('book', {});
+  }
 
   handleAddToWishlist = () => {
     const { id } = this.book;
@@ -22,18 +26,20 @@ class DetailBox extends Component {
 
   handleRentBook = () => {};
 
+  isOnWishlist = () => {
+    const { wishlistBooks } = this.props;
+    const { id } = this.book;
+    return !!wishlistBooks.find(book => book.id === id);
+  };
+
   render() {
-    const { navigation, wishlistBooks } = this.props;
-    this.book = navigation.getParam('book', {});
     const {
       image: { url: image },
       title,
       author,
       year,
-      genre,
-      id
+      genre
     } = this.book;
-    const isOnWishlist = !!wishlistBooks.find(book => book.id === id);
     return (
       <DetailBoxLayout
         image={image}
@@ -44,7 +50,7 @@ class DetailBox extends Component {
         handleRentBook={this.handleRentBook}
         handleAddToWishlist={this.handleAddToWishlist}
         handleRemoveBook={this.handleRemoveBook}
-        addWishlist={isOnWishlist}
+        addWishlist={this.isOnWishlist()}
       />
     );
   }
