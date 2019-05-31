@@ -11,7 +11,9 @@ import { INCORRECT_USER_AND_PASSWORD } from './constants/texts';
 class Login extends Component {
   state = {
     user: '',
-    password: ''
+    password: '',
+    tryLogIn: false,
+    messageError: ''
   };
 
   update = param => text => this.setState({ [param]: text });
@@ -19,6 +21,7 @@ class Login extends Component {
   updateMessageError = text => this.setState({ messageError: text });
 
   logInSuccessful = async () => {
+    this.setState({ tryLogIn: false });
     const { login } = this.props;
     const { user, password } = this.state;
     const resultEmailValidation = validateEmail(user);
@@ -26,6 +29,7 @@ class Login extends Component {
     if (resultEmailValidation.isSuccess() && resultPasswordValidation.isSuccess()) {
       this.updateMessageError('');
       login(user, password);
+      this.setState({ tryLogIn: true });
     } else {
       this.updateMessageError(
         `${resultEmailValidation.getOrElse()}${
@@ -37,8 +41,13 @@ class Login extends Component {
 
   render() {
     const { error, isLoading } = this.props;
-    const { messageError } = this.state;
-    const message = Object.values(error).length ? INCORRECT_USER_AND_PASSWORD : messageError;
+    const { messageError, tryLogIn } = this.state;
+    const message = tryLogIn
+      ? Object.values(error).length
+        ? INCORRECT_USER_AND_PASSWORD
+        : ''
+      : messageError;
+    console.log(message);
     return (
       <LoginLayout
         updateUser={this.update('user')}
