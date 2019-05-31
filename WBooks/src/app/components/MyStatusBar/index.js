@@ -1,17 +1,22 @@
-import React from 'react';
-import { StatusBar } from 'react-native';
-import { white } from '@constants/colors';
+import React, { Component } from 'react';
+import { StatusBar, SafeAreaView } from 'react-native';
+import { dark } from '@constants/colors';
 
-function MyStatusBar() {
-  return (
-    <StatusBar
-      barStyle="dark-content"
-      hidden={false}
-      backgroundColor={white}
-      translucent={false}
-      networkActivityIndicatorVisible
-    />
-  );
+class MyStatusBar extends Component {
+  render() {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: dark }}>
+        <StatusBar
+          barStyle="light-content"
+          hidden={false}
+          backgroundColor={dark}
+          translucent={false}
+          networkActivityIndicatorVisible
+        />
+        {this.props.children}
+      </SafeAreaView>
+    );
+  }
 }
 
 export default MyStatusBar;

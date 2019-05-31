@@ -10,8 +10,9 @@ if (__DEV__) {
 export default function index() {
   return (
     <Fragment>
-      <MyStatusBar />
-      <MyApp />
+      <MyStatusBar>
+        <MyApp />
+      </MyStatusBar>
     </Fragment>
   );
 }
