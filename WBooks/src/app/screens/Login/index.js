@@ -1,76 +1,50 @@
 import React, { Component } from 'react';
-import { withNavigation } from 'react-navigation';
+import { getFormValues, change } from 'redux-form';
 import { actionCreators } from '@redux/auth/actions';
 import { connect } from 'react-redux';
 
-import { validateEmail } from './constants/validations/emailValidation';
-import { validatePassword } from './constants/validations/passwordValidation';
 import LoginLayout from './layout';
-import { INCORRECT_USER_AND_PASSWORD } from './constants/texts';
+
+const mapStateToProps = state => ({
+  errorAuth: state.auth.error,
+  isLoading: state.auth.isLoading,
+  data: state.auth.data,
+  formValues: getFormValues('login')(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: (user, password) => dispatch(actionCreators.login(user, password)),
+  onChange: (nameField, value) => dispatch(change('login', nameField, value)),
+  removeError: () => dispatch(actionCreators.removeError())
+});
 
 class Login extends Component {
-  state = {
-    user: '',
-    password: '',
-    tryLogIn: false,
-    messageError: ''
+  submit = values => {
+    const { login } = this.props;
+    const { user, password } = values;
+    login(user, password);
   };
 
-  update = param => text => this.setState({ [param]: text });
-
-  updateMessageError = text => this.setState({ messageError: text });
-
-  logInSuccessful = async () => {
-    this.setState({ tryLogIn: false });
-    const { login } = this.props;
-    const { user, password } = this.state;
-    const resultEmailValidation = validateEmail(user);
-    const resultPasswordValidation = validatePassword(password);
-    if (resultEmailValidation.isSuccess() && resultPasswordValidation.isSuccess()) {
-      this.updateMessageError('');
-      login(user, password);
-      this.setState({ tryLogIn: true });
-    } else {
-      this.updateMessageError(
-        `${resultEmailValidation.getOrElse()}${
-          resultEmailValidation.isSuccess() ? resultPasswordValidation.getOrElse() : ''
-        }`
-      );
-    }
+  onHandleChange = nameField => value => {
+    const { onChange, removeError } = this.props;
+    removeError();
+    onChange(nameField, value.nativeEvent.text);
   };
 
   render() {
-    const { error, isLoading } = this.props;
-    const { messageError, tryLogIn } = this.state;
-    const message = tryLogIn
-      ? Object.values(error).length
-        ? INCORRECT_USER_AND_PASSWORD
-        : ''
-      : messageError;
-    console.log(message);
+    const { isLoading, errorAuth } = this.props;
     return (
       <LoginLayout
-        updateUser={this.update('user')}
-        updatePassword={this.update('password')}
-        logInSuccessful={this.logInSuccessful}
+        errorLogIn={errorAuth}
         isLoading={isLoading}
-        errorMessage={message}
+        onSubmit={this.submit}
+        onChange={this.onHandleChange}
       />
     );
   }
 }
 
-const mapStateToProps = state => ({
-  error: state.auth.error,
-  isLoading: state.auth.isLoading,
-  data: state.auth.data
-});
-
-const mapDispatchToProps = dispatch => ({
-  login: (user, password) => dispatch(actionCreators.login(user, password))
-});
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withNavigation(Login));
+)(Login);

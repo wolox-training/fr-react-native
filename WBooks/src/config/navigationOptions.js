@@ -29,13 +29,15 @@ export const navigationOptionsStyle = {
   },
   headerStyle: {
     borderBottomWidth: 0,
-    backgroundColor: lightBlue
+    backgroundColor: lightBlue,
+    marginBottom: 50
   },
   headerTitleStyle: {
     color: white,
     fontWeight: 'bold',
     fontSize: 17
-  }
+  },
+  headerForceInset: { top: 'never' }
 };
 
 export const defaultNavigationOptions = {
