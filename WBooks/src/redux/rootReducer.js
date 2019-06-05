@@ -1,5 +1,6 @@
 import { combineReducers as CR } from 'redux';
 import { wrapCombineReducers } from 'redux-recompose';
+import { reducer as formReducer } from 'redux-form';
 
 import { loginReducers } from './auth/reducer';
 import { searchReducer } from './search/reducer';
@@ -14,7 +15,8 @@ const rootReducer = navReducer =>
     books: booksReducer,
     nav: navReducer,
     search: searchReducer,
-    wishlist: wishlistReducer
+    wishlist: wishlistReducer,
+    form: formReducer
   });
 
 export default rootReducer;

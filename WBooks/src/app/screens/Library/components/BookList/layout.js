@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, ScrollView } from 'react-native';
 
 import Book from '../Book';
 
@@ -17,10 +17,12 @@ const separator = () => <View style={styles.separator} />;
 function BookListLayout({ data }) {
   return (
     <FlatList
+      style={{ margin: 20 }}
       data={data}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
       ItemSeparatorComponent={separator}
+      showsVerticalScrollIndicator={false}
     />
   );
 }

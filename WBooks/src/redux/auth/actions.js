@@ -41,5 +41,8 @@ export const actionCreators = {
     const client = await asyncStorageOperations.getClient();
     const userId = await asyncStorageOperations.getUserId();
     login.setHeader(accessToken, client, userId);
+  },
+  removeError: () => dispatch => {
+    dispatch(privateActionsCreators.loginFailure({}));
   }
 };

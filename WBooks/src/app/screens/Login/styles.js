@@ -12,8 +12,7 @@ const styles = StyleSheet.create({
     backgroundColor: white,
     borderColor: darkGray,
     borderWidth: 1,
-    borderRadius: 10,
-    marginBottom: 10
+    borderRadius: 10
   },
   container: {
     height: 42,
@@ -39,6 +38,13 @@ const styles = StyleSheet.create({
   },
   marginBottom: {
     marginBottom: 5
+  },
+  inputContainer: {
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  textErrorContainer: {
+    marginBottom: 10
   }
 });
 

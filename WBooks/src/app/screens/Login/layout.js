@@ -1,41 +1,41 @@
 import React, { Fragment } from 'react';
-import { ImageBackground, TextInput, Text, View, TouchableOpacity } from 'react-native';
+import { ImageBackground, Text } from 'react-native';
 import backgroundImage from '@assets/general/bc_inicio.png';
+import { Field, reduxForm } from 'redux-form';
 
-import { USER_PLACE_HOLDER, PASSWORD_PLACE_HOLDER, LOG_IN } from './constants/texts';
+import InputComponent from './components/InputComponent';
+import { validEmail, emptyEmail, emptyPassword, moreThanFiveLength } from './constants/reduxValidations';
+import { USER_PLACE_HOLDER, PASSWORD_PLACE_HOLDER, INCORRECT_USER_AND_PASSWORD } from './constants/texts';
 import styles from './styles';
 import ButtonOrLoading from './components/ButtonOrLoading';
 
-const COMMON_PROPS = {
-  autoCapitalize: 'none',
-  textAlign: 'center',
-  style: [styles.textInput, styles.container]
-};
-
-function LoginLayout({ updateUser, updatePassword, logInSuccessful, errorMessage, isLoading }) {
+const message = errorLogIn => (Object.values(errorLogIn).length ? INCORRECT_USER_AND_PASSWORD : '');
+function LoginLayout({ errorLogIn, isLoading, handleSubmit, onSubmit, onChange }) {
   return (
     <ImageBackground style={styles.loginContainer} source={backgroundImage}>
-      <View style={styles.flexRow}>
-        <TextInput
-          placeholder={USER_PLACE_HOLDER}
-          onChangeText={text => updateUser(text)}
-          {...COMMON_PROPS}
-        />
-      </View>
-      <View style={styles.flexRow}>
-        <TextInput
-          placeholder={PASSWORD_PLACE_HOLDER}
-          secureTextEntry
-          onChangeText={text => updatePassword(text)}
-          {...COMMON_PROPS}
-        />
-      </View>
-      <ButtonOrLoading logInSuccessful={logInSuccessful} isLoading={isLoading} />
+      <Field
+        name="user"
+        component={InputComponent}
+        validate={[validEmail, emptyEmail]}
+        label={USER_PLACE_HOLDER}
+        onChange={onChange('user')}
+      />
+      <Field
+        name="password"
+        component={InputComponent}
+        validate={[emptyPassword, moreThanFiveLength]}
+        secureTextEntry
+        label={PASSWORD_PLACE_HOLDER}
+        onChange={onChange('password')}
+      />
+      <ButtonOrLoading logInSuccessful={handleSubmit(onSubmit)} isLoading={isLoading} />
       <Fragment>
-        <Text style={styles.textError}>{errorMessage}</Text>
+        <Text style={styles.textError}>{message(errorLogIn)}</Text>
       </Fragment>
     </ImageBackground>
   );
 }
 
-export default LoginLayout;
+export default reduxForm({
+  form: 'login'
+})(LoginLayout);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import SearchBar from '@app/screens/Search/components/SearchBar';
+import { lightBlue } from '@constants/colors';
 
 import headerBackground from '../assets/general/bc_nav_bar.png';
 import back from '../assets/navigation_bar/ic_back.png';
@@ -22,11 +23,21 @@ export const navigationOptionsStyle = {
   headerBackground: <Image source={headerBackground} />,
   headerBackImage: <Image style={stylesGenericOptions.imageBack} source={back} />,
   headerBackTitle: null,
+  shadowRadius: 0,
+  shadowOffset: {
+    height: 0
+  },
+  headerStyle: {
+    borderBottomWidth: 0,
+    backgroundColor: lightBlue,
+    marginBottom: 50
+  },
   headerTitleStyle: {
     color: white,
     fontWeight: 'bold',
     fontSize: 17
-  }
+  },
+  headerForceInset: { top: 'never' }
 };
 
 export const defaultNavigationOptions = {

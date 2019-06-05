@@ -9,11 +9,13 @@ function BookDetail() {
   return (
     <View style={styles.bookDetailContainer}>
       <ScrollView>
-        <View style={styles.detailBoxContainer}>
-          <DetailBox />
-        </View>
-        <View style={styles.commentBoxContainer}>
-          <CommentBox />
+        <View style={{ marginHorizontal: 25 }}>
+          <View style={styles.detailBoxContainer}>
+            <DetailBox />
+          </View>
+          <View style={styles.commentBoxContainer}>
+            <CommentBox />
+          </View>
         </View>
       </ScrollView>
     </View>
